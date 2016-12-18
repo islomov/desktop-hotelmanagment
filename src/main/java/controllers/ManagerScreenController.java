@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 public class ManagerScreenController implements Initializable{
 
     @FXML
+    private MenuItem roomsSubItem;
+
+    @FXML
     private TableColumn<?, ?> mColumnLastName;
 
     @FXML
@@ -29,7 +32,10 @@ public class ManagerScreenController implements Initializable{
     private TextField mSearchField;
 
     @FXML
-    private TableColumn mColumnGender;
+    private TableColumn<?, ?> mColumnGender;
+
+    @FXML
+    private MenuItem receptionistSubMenu;
 
     @FXML
     private DatePicker mBirthdayDate;
@@ -62,6 +68,9 @@ public class ManagerScreenController implements Initializable{
     private TableColumn<?, ?> mColumnExperience;
 
     @FXML
+    private MenuItem hotelSubMenu;
+
+    @FXML
     private ChoiceBox<?> mGenderChoice;
 
     @FXML
@@ -70,6 +79,20 @@ public class ManagerScreenController implements Initializable{
     @FXML
     private TextField mNameField;
 
+    @FXML
+    void onRoomsClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onReceptionistClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onHotelClicked(ActionEvent event) {
+
+    }
 
     @FXML
     void onCreateBtnClicked(ActionEvent event) {
@@ -93,6 +116,6 @@ public class ManagerScreenController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 }
