@@ -18,6 +18,9 @@ import java.io.IOException;
  */
 public class ReceptionistScreenController {
     @FXML
+    Parent root;
+
+    @FXML
     private TextField mGNameField;
 
     @FXML
@@ -81,12 +84,15 @@ public class ReceptionistScreenController {
 
     @FXML
     void onExitClicked(ActionEvent event) throws IOException {
-        Stage stage  = new Stage();
-        Parent rootHotel = FXMLLoader.load(getClass().getResource("/main/layout/login_screen.fxml"));
-        Scene scene = new Scene(rootHotel);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        Stage stage  = (Stage) root.getScene().getWindow();
+        stage.close();
+
+        Stage newStage = new Stage();
+        Parent adminRoot = FXMLLoader.load(getClass().getResource("/main/layout/login_screen.fxml"));
+        Scene scene = new Scene(adminRoot);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
+        newStage.show();
     }
 
 }

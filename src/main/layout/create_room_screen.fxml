@@ -23,12 +23,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Exit" />
+                        <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane  prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0">
             <children>
                 <SplitPane dividerPositions="0.29797979797979796" prefHeight="595.0" prefWidth="958.0" style="-fx-background-color: #2c3e50;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                     <items>
