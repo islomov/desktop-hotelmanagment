@@ -18,6 +18,11 @@ import java.io.IOException;
  * Created by sardor on 12/15/16.
  */
 public class LoginScreenController {
+    Stage stage;
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private ChoiceBox mChoiceBox;
@@ -36,7 +41,7 @@ public class LoginScreenController {
     void onLoginClicked(ActionEvent event) throws IOException {
         Parent adminParent;
         if(mChoiceBox.getSelectionModel().getSelectedItem().toString().equals("Manager")){
-            adminParent = FXMLLoader.load(getClass().getResource("/main/layout/manager_screen.fxml"));
+            adminParent = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
         }else{
             adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
         }

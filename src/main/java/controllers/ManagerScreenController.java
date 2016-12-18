@@ -2,120 +2,66 @@ package main.java.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import main.java.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created by sardor on 12/16/16.
  */
-public class ManagerScreenController implements Initializable{
+public abstract class ManagerScreenController implements Initializable{
+
+
 
     @FXML
-    private MenuItem roomsSubItem;
+    private AnchorPane root;
 
-    @FXML
-    private TableColumn<?, ?> mColumnLastName;
-
-    @FXML
-    private TableColumn<?, ?> mColumnBirthday;
-
-    @FXML
-    private TableColumn<?, ?> mColumnMarried;
-
-    @FXML
-    private ChoiceBox<?> mMarriedChoice;
-
-    @FXML
-    private TextField mSearchField;
-
-    @FXML
-    private TableColumn<?, ?> mColumnGender;
-
-    @FXML
-    private MenuItem receptionistSubMenu;
-
-    @FXML
-    private DatePicker mBirthdayDate;
-
-    @FXML
-    private TextField mLastNameField;
-
-    @FXML
-    private TableColumn<?, ?> mColumnNo;
-
-    @FXML
-    private Button mDeleteBtn;
-
-    @FXML
-    private Button mCreateBtn;
-
-    @FXML
-    private Button mSearchBtn;
-
-    @FXML
-    private Button mEditBtn;
-
-    @FXML
-    private ChoiceBox<?> mExperienceChoice;
-
-    @FXML
-    private TableView<?> mTableView;
-
-    @FXML
-    private TableColumn<?, ?> mColumnExperience;
 
     @FXML
     private MenuItem hotelSubMenu;
 
     @FXML
-    private ChoiceBox<?> mGenderChoice;
+    private MenuItem roomsSubItem;
 
     @FXML
-    private TableColumn<?, ?> mColumnName;
+    private MenuItem receptionistSubMenu;
 
     @FXML
-    private TextField mNameField;
-
-    @FXML
-    void onRoomsClicked(ActionEvent event) {
-
+    void onRoomsClicked(ActionEvent event) throws IOException {
+        Stage stage  = (Stage) root.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/main/layout/create_room_screen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void onReceptionistClicked(ActionEvent event) {
-
+    void onReceptionistClicked(ActionEvent event) throws IOException {
+        Stage stage  = (Stage) root.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void onHotelClicked(ActionEvent event) {
-
+    void onHotelClicked(ActionEvent event) throws IOException {
+        Stage stage  = (Stage) root.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/main/layout/create_room_screen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    @FXML
-    void onCreateBtnClicked(ActionEvent event) {
 
-    }
-
-    @FXML
-    void onSearchBtnClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onEditBtnClicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onDeleteBtnClicked(ActionEvent event) {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
