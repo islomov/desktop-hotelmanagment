@@ -1,10 +1,10 @@
 package main.java.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -81,5 +81,25 @@ public class CreateReceptController  extends ManagerScreenController{
     @FXML
     private TextField mSearchRoomField;
 
+
+    @FXML
+    void onCreateClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onSearchClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onEditClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onDeleteClicked(ActionEvent event) {
+
+    }
 
 }

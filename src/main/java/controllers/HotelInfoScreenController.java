@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
  * Created by sardor on 12/18/16.
  */
 public class HotelInfoScreenController implements Initializable {
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
