@@ -30,47 +30,47 @@
                      <children>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest name">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <TextField fx:id="mGNameField" GridPane.columnIndex="1" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" GridPane.rowIndex="1">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
-                        <ChoiceBox fx:id="mGenderChoice" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room type" GridPane.rowIndex="4">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room No." GridPane.rowIndex="5">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Day" GridPane.rowIndex="6">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Count day" GridPane.rowIndex="7">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price" GridPane.rowIndex="8">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
-                        <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="mRoomNoField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <DatePicker fx:id="mArrivalData" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <DatePicker fx:id="mArrivalData" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="mCountDayField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="mPriceField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" GridPane.rowIndex="2">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
-                        <DatePicker fx:id="mBirthdayDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="mBirthdayDate" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of People" GridPane.rowIndex="3">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font></Text>
                         <TextField fx:id="mCountPeopleField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
