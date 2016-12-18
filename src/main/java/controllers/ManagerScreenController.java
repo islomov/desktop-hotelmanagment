@@ -56,10 +56,11 @@ public abstract class ManagerScreenController implements Initializable{
 
     @FXML
     void onHotelClicked(ActionEvent event) throws IOException {
-        Stage stage  = (Stage) root.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/main/layout/create_room_screen.fxml"));
-        Scene scene = new Scene(root);
+        Stage stage  = new Stage();
+        Parent rootHotel = FXMLLoader.load(getClass().getResource("/main/layout/hotel_screen.fxml"));
+        Scene scene = new Scene(rootHotel);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
