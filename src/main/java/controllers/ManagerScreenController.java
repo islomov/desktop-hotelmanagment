@@ -19,9 +19,8 @@ import java.util.ResourceBundle;
 /**
  * Created by sardor on 12/16/16.
  */
+
 public abstract class ManagerScreenController implements Initializable{
-
-
 
     @FXML
     private AnchorPane root;
@@ -35,6 +34,7 @@ public abstract class ManagerScreenController implements Initializable{
 
     @FXML
     private MenuItem receptionistSubMenu;
+
 
     @FXML
     void onRoomsClicked(ActionEvent event) throws IOException {
