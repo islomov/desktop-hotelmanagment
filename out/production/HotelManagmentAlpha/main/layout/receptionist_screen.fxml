@@ -184,6 +184,7 @@
                                         <Font size="20.0"/>
                                     </font>
                                 </Text>
+
                                 <Button fx:id="mSearchBtn" layoutX="28.0" layoutY="28.0" mnemonicParsing="false"
                                         onAction="#onSearchClicked" prefHeight="27.0" prefWidth="75.0"
                                         style="-fx-background-color: #09b28c;" text="search" textFill="WHITE"
