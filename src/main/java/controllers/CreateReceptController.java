@@ -54,6 +54,7 @@ public class CreateReceptController implements Initializable {
     @FXML
     private TableColumn<?, ?> mColumnNo;
 
+
     @FXML
     private Button mDeleteBtn;
 
