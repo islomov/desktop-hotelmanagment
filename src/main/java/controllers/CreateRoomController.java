@@ -2,6 +2,7 @@ package main.java.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -10,7 +11,7 @@ import java.util.ResourceBundle;
 /**
  * Created by sardor on 12/18/16.
  */
-public class CreateRoomController extends ManagerScreenController {
+public class CreateRoomController implements Initializable {
 
 
     @FXML
