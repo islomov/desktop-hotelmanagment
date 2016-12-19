@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.java.DataBase.ReceptionistDB;
 import main.java.models.Receptionist;
@@ -85,6 +86,7 @@ public class CreateReceptController implements Initializable {
 
     ReceptionistDB db;
     static ObservableList<Receptionist> receptionists;
+    int selectedItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,6 +103,9 @@ public class CreateReceptController implements Initializable {
 
     @FXML
     void onCreateClicked(ActionEvent event) {
+
+        // TODO: 19.12.2016 Check if fields not empty
+
         Receptionist receptionist = new Receptionist();
         receptionist.setUserName(mUserNameField.getText());
         receptionist.setPassword(mPassword.getText());
@@ -111,6 +116,8 @@ public class CreateReceptController implements Initializable {
         boolean isMarried = mMarriedChoice.getSelectionModel().getSelectedIndex() == 0;
         receptionist.setMarried(isMarried);
         receptionist.setBirthday(mBirthdayDate.getValue().toString());
+        receptionists.add(receptionist);
+        refreshFields();
         db.addReceptionist(receptionist);
     }
 
@@ -121,12 +128,34 @@ public class CreateReceptController implements Initializable {
 
     @FXML
     void onEditClicked(ActionEvent event) {
+        Receptionist receptionist = receptionists.get(selectedItem);
+        //setValues(receptionist);
+    }
 
+    private void setValues(Receptionist receptionist) {
+        mUserNameField.setText(receptionist.getUserName());
+        mNameField.setText(receptionist.getFirstName());
+        mLastNameField.setText(receptionist.getLastName());
+        mPassword.setText(receptionist.getPassword());
     }
 
     @FXML
     void onDeleteClicked(ActionEvent event) {
+        Receptionist receptionist = receptionists.get(selectedItem);
+        db.deleteReceptionist(receptionist.getHash_id());
+        receptionists.remove(selectedItem);
+    }
 
+    @FXML
+    void onRowClicked(MouseEvent event) {
+        selectedItem = mTableView.getSelectionModel().getSelectedIndex();
+    }
+
+    private void refreshFields(){
+        mUserNameField.setText("");
+        mNameField.setText("");
+        mLastNameField.setText("");
+        mPassword.setText("");
     }
 
 }

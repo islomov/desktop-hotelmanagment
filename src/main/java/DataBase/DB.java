@@ -28,7 +28,7 @@ public class DB {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hotel",user,password);
 
             if (connection != null){
-                System.out.print("Database connected");
+                System.out.println("Database connected");
                 setConnected(true);
             }
 
@@ -43,6 +43,7 @@ public class DB {
             try {
                 connection.close();
                 setConnected(false);
+                System.out.println("Database closed");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

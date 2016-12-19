@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.collections.FXCollections?>
+
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.CreateReceptController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
@@ -41,7 +42,7 @@
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+                                        <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                     <String fx:value="Male" />
@@ -66,7 +67,7 @@
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <ChoiceBox fx:id="mExperienceChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" >
+                                        <ChoiceBox fx:id="mExperienceChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                     <String fx:value="1 years" />
@@ -75,7 +76,7 @@
                                                 </FXCollections>
                                             </items>
                                         </ChoiceBox>
-                                        <ChoiceBox fx:id="mMarriedChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" >
+                                        <ChoiceBox fx:id="mMarriedChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                     <String fx:value="Yes" />
@@ -118,9 +119,8 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                             <children>
-                                <TableView fx:id="mTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                                <TableView fx:id="mTableView" onMouseClicked="#onRowClicked" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                                     <columns>
-                                        <TableColumn fx:id="mColumnNo" prefWidth="100.0" text="No." />
                                         <TableColumn fx:id="mColumnName" prefWidth="100.0" text="Name" />
                                         <TableColumn fx:id="mColumnLastName" prefWidth="100.0" text="Last name" />
                                         <TableColumn fx:id="mColumnGender" prefWidth="100.0" text="Gender" />

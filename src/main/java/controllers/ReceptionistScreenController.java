@@ -82,10 +82,7 @@ public class ReceptionistScreenController {
 
     }
 
-    @FXML
-    void onRowClicked(ActionEvent event) {
 
-    }
 
 
     @FXML

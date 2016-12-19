@@ -2,6 +2,7 @@ package main.java.DataBase;
 
 import main.java.models.Receptionist;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,14 +14,13 @@ import java.util.List;
  */
 public class ReceptionistDB extends DB {
 
-    PreparedStatement insertReceptionistSt = null;
-    PreparedStatement updateReceptionistSt = null;
-    PreparedStatement deleteReceptionistSt = null;
-    PreparedStatement getAllReceptionistSt = null;
+    private PreparedStatement insertReceptionistSt = null;
+    private PreparedStatement updateReceptionistSt = null;
+    private PreparedStatement deleteReceptionistSt = null;
+    private PreparedStatement getAllReceptionistSt = null;
 
     public ReceptionistDB() {
         super();
-
         try {
             insertReceptionistSt = this.getConnection().prepareStatement("INSERT INTO receptionist"
                     + "(username, password, first_name, last_name, gender, experience, married, birthday, hash_id)"
@@ -42,41 +42,33 @@ public class ReceptionistDB extends DB {
     }
 
     public void addReceptionist(Receptionist receptionist) {
-        if (!isConnected())
-            this.connect();
         try {
             setValues(insertReceptionistSt,receptionist);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.close();
+
     }
 
     public void updateReceptionist(Receptionist receptionist) {
-        if (!isConnected())
-            this.connect();
         try {
             setValues(updateReceptionistSt,receptionist);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.close();
     }
 
-    public void deleteReceptionist(int hash){
-        if (!isConnected())
-            this.connect();
+    public void deleteReceptionist(String hash){
         try {
-            deleteReceptionistSt.setInt(1,hash);
+            deleteReceptionistSt.setString(1,hash);
+            deleteReceptionistSt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.close();
     }
 
     public List<Receptionist> getAllReceptionists(){
-        if (!isConnected())
-            this.connect();
+
         ResultSet resultSet = null;
         List<Receptionist> receptionists = new ArrayList<>();
         try {
@@ -100,7 +92,6 @@ public class ReceptionistDB extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        this.close();
         return receptionists;
     }
 
