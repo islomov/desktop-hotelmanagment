@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.CreateRoomController">
@@ -48,7 +49,15 @@
                                             </font>
                                         </Text>
                                         <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="1.7976931348623157E308"
-                                                   minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                   minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="Double room" />
+                                                    <String fx:value="Suit room" />
+                                                    <String fx:value="King room" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Day of creation"
                                               GridPane.rowIndex="5">
                                             <font>
@@ -87,11 +96,41 @@
                                             </font>
                                         </Text>
                                         <ChoiceBox fx:id="mBadRoomChoice" maxWidth="1.7976931348623157E308"
-                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="1" />
+                                                    <String fx:value="2" />
+                                                    <String fx:value="3" />
+                                                    <String fx:value="4" />
+                                                    <String fx:value="5" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <ChoiceBox fx:id="mKitchenRoomChoice" maxWidth="1.7976931348623157E308"
-                                                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="1" />
+                                                    <String fx:value="2" />
+                                                    <String fx:value="3" />
+                                                    <String fx:value="4" />
+                                                    <String fx:value="5" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <ChoiceBox fx:id="mBathRoomChoice" maxWidth="1.7976931348623157E308"
-                                                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="1" />
+                                                    <String fx:value="2" />
+                                                    <String fx:value="3" />
+                                                    <String fx:value="4" />
+                                                    <String fx:value="5" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <TextField fx:id="mCostRoomField" GridPane.columnIndex="1"
                                                    GridPane.rowIndex="6"/>
                                     </children>
