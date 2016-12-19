@@ -14,74 +14,70 @@ import java.util.ResourceBundle;
  */
 public class CreateReceptController implements Initializable {
 
+    @FXML
+    private TableColumn<?, ?> mColumnLastName;
+
+    @FXML
+    private TableColumn<?, ?> mColumnBirthday;
+
+    @FXML
+    private TableColumn<?, ?> mColumnMarried;
+
+    @FXML
+    private ChoiceBox<?> mMarriedChoice;
+
+    @FXML
+    private TextField mSearchField;
+
+    @FXML
+    private TableColumn<?, ?> mColumnGender;
+
+    @FXML
+    private DatePicker mBirthdayDate;
+
+    @FXML
+    private TextField mLastNameField;
+
+    @FXML
+    private TextField mPassword;
+
+    @FXML
+    private TableColumn<?, ?> mColumnNo;
+
+    @FXML
+    private Button mDeleteBtn;
+
+    @FXML
+    private Button mCreateBtn;
+
+    @FXML
+    private Button mSearchBtn;
+
+    @FXML
+    private Button mEditBtn;
+
+    @FXML
+    private ChoiceBox<?> mExperienceChoice;
+
+    @FXML
+    private TableView<?> mTableView;
+
+    @FXML
+    private TableColumn<?, ?> mColumnExperience;
+
+    @FXML
+    private ChoiceBox<?> mGenderChoice;
+
+    @FXML
+    private TableColumn<?, ?> mColumnName;
+
+    @FXML
+    private TextField mNameField;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
-    @FXML
-    private TableColumn<?, ?> mColumnRoomNo;
-
-    @FXML
-    private TableColumn<?, ?> mColumnKitchen;
-
-    @FXML
-    private Button mEditRoomBtn;
-
-
-    @FXML
-    private ChoiceBox<?> mKitchenRoomChoice;
-
-    @FXML
-    private TableColumn<?, ?> mColumnBad;
-
-    @FXML
-    private Button mSearchRoomBtn;
-
-    @FXML
-    private TableColumn<?, ?> mColumnRoomType;
-
-    @FXML
-    private DatePicker mCreationDate;
-
-    @FXML
-    private Button mCreateRoomBtn;
-
-    @FXML
-    private ChoiceBox<?> mBadRoomChoice;
-
-    @FXML
-    private Button mDeleteRoomBtn;
-
-    @FXML
-    private TableView<?> mTableRoom;
-
-    @FXML
-    private TextField mCostRoomField;
-
-    @FXML
-    private TextField mRoomNoField;
-
-
-    @FXML
-    private ChoiceBox<?> mRoomTypeChoice;
-
-    @FXML
-    private ChoiceBox<?> mBathRoomChoice;
-
-    @FXML
-    private TableColumn<?, ?> mColumnDate;
-
-
-    @FXML
-    private TableColumn<?, ?> mColumnCost;
-
-    @FXML
-    private TableColumn<?, ?> mColumnBath;
-
-    @FXML
-    private TextField mSearchRoomField;
-
 
     @FXML
     void onCreateClicked(ActionEvent event) {
