@@ -4,8 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import main.java.DataBase.DB;
+import main.java.DataBase.ReceptionistDB;
+import main.java.models.Receptionist;
+
+import java.sql.Date;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -20,8 +24,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
-        DBConnect db = new DBConnect();
 
     }
 }

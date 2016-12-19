@@ -77,5 +77,10 @@ public abstract class ManagerScreenController implements Initializable{
         newStage.show();
     }
 
+    @FXML
+    void onCreateClicked(ActionEvent event){
+
+    }
+
 
 }

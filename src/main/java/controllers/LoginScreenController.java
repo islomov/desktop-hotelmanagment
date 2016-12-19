@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.models.Manager;
 
 import java.io.IOException;
 
@@ -40,11 +41,25 @@ public class LoginScreenController {
     @FXML
     void onLoginClicked(ActionEvent event) throws IOException {
         Parent adminParent;
+
+        Manager manager = new Manager();
+
+        String userName = mUserName.getText();
+        String password = mPassword.getText();
+
         if(mChoiceBox.getSelectionModel().getSelectedItem().toString().equals("Manager")){
-            adminParent = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
+            if (manager.getUserName().equals(userName) && manager.getPassword().equals(password)) {
+                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
+                login(event, adminParent);
+            }
         }else{
             adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
+            login(event, adminParent);
         }
+
+    }
+
+    private void login(ActionEvent event, Parent adminParent) {
         Scene adminScene = new Scene(adminParent);
         Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         adminStage.setResizable(true);
