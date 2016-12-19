@@ -15,6 +15,11 @@ public class Receptionist {
     String experience;
     boolean isMarried;
     Date birthday;
+    String hash_id;
+
+    public Receptionist() {
+        hash_id = String.valueOf(hashCode());
+    }
 
     public String getUserName() {
         return userName;
@@ -78,5 +83,13 @@ public class Receptionist {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getHash_id() {
+        return hash_id;
+    }
+
+    public void setHash_id(String hash_id) {
+        this.hash_id = hash_id;
     }
 }

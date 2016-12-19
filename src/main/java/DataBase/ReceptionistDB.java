@@ -69,7 +69,7 @@ public class ReceptionistDB extends DB {
         statement.setString(6, receptionist.getExperience());
         statement.setBoolean(7, receptionist.isMarried());
         statement.setDate(8, receptionist.getBirthday());
-        statement.setInt(9, receptionist.hashCode());
+        statement.setString(9, receptionist.getHash_id());
         statement.executeUpdate();
     }
 
