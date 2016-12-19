@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.CreateReceptController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
@@ -19,6 +20,7 @@
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     </columnConstraints>
                                     <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -28,48 +30,76 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.rowIndex="1">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <TextField fx:id="mNameField" GridPane.columnIndex="1" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" GridPane.rowIndex="2">
+                                        <TextField fx:id="mNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" GridPane.rowIndex="3">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" GridPane.rowIndex="3">
+                                        <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="Male" />
+                                                    <String fx:value="Female" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" GridPane.rowIndex="4">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <DatePicker fx:id="mBirthdayDate" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name" GridPane.rowIndex="1">
+                                        <DatePicker fx:id="mBirthdayDate" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name" GridPane.rowIndex="2">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <TextField fx:id="mLastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Experience" GridPane.rowIndex="4">
+                                        <TextField fx:id="mLastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Experience" GridPane.rowIndex="5">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <ChoiceBox fx:id="mExperienceChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                        <ChoiceBox fx:id="mMarriedChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Married" GridPane.rowIndex="5">
+                                        <ChoiceBox fx:id="mExperienceChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" >
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="1 years" />
+                                                    <String fx:value="2 years" />
+                                                    <String fx:value="3 years and more" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
+                                        <ChoiceBox fx:id="mMarriedChoice" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" >
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="Yes" />
+                                                    <String fx:value="No" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Married" GridPane.rowIndex="6">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.rowIndex="6">
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.rowIndex="7">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="mPassword" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="mPassword" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User name">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="mUserNameField" GridPane.columnIndex="1" />
                                     </children>
                                 </GridPane>
                                 <Text fill="WHITE" layoutX="127.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create  Receptionist" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
@@ -77,7 +107,7 @@
                                         <Font size="20.0" />
                                     </font>
                                 </Text>
-                                <Button layoutX="122.0" layoutY="464.0" mnemonicParsing="false" onAction="#onCreateClicked" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #09b28c;" text="Create" textFill="WHITE" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                <Button fx:id="mCreateBtn" layoutX="122.0" layoutY="464.0" mnemonicParsing="false" onAction="#onCreateClicked" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #09b28c;" text="Create" textFill="WHITE" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -131,5 +161,4 @@
         </AnchorPane>
 
     </children>
-
 </AnchorPane>
