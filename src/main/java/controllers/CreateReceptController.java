@@ -106,20 +106,26 @@ public class CreateReceptController implements Initializable {
     void onCreateClicked(ActionEvent event) {
 
         // TODO: 19.12.2016 Check if fields not empty
-
-        Receptionist receptionist = new Receptionist();
-        receptionist.setUserName(mUserNameField.getText());
-        receptionist.setPassword(mPassword.getText());
-        receptionist.setFirstName(mNameField.getText());
-        receptionist.setLastName(mLastNameField.getText());
-        receptionist.setGender(mGenderChoice.getSelectionModel().getSelectedItem().toString());
-        receptionist.setExperience(mExperienceChoice.getSelectionModel().getSelectedItem().toString());
-        boolean isMarried = mMarriedChoice.getSelectionModel().getSelectedIndex() == 0;
-        receptionist.setMarried(isMarried);
-        receptionist.setBirthday(mBirthdayDate.getValue().toString());
-        receptionists.add(receptionist);
-        refreshFields();
-        db.addReceptionist(receptionist);
+        if (mCreateBtn.getText().equals("Save")){
+            db.updateReceptionist(receptionists.get(selectedItem));
+            receptionists.remove(selectedItem);
+            mCreateBtn.setText("Create");
+            refreshFields();
+        }else {
+            Receptionist receptionist = new Receptionist();
+            receptionist.setUserName(mUserNameField.getText());
+            receptionist.setPassword(mPassword.getText());
+            receptionist.setFirstName(mNameField.getText());
+            receptionist.setLastName(mLastNameField.getText());
+            receptionist.setGender(mGenderChoice.getSelectionModel().getSelectedItem().toString());
+            receptionist.setExperience(mExperienceChoice.getSelectionModel().getSelectedItem().toString());
+            boolean isMarried = mMarriedChoice.getSelectionModel().getSelectedIndex() == 0;
+            receptionist.setMarried(isMarried);
+            receptionist.setBirthday(mBirthdayDate.getValue().toString());
+            receptionists.add(receptionist);
+            refreshFields();
+            db.addReceptionist(receptionist);
+        }
     }
 
     @FXML
@@ -130,7 +136,7 @@ public class CreateReceptController implements Initializable {
     @FXML
     void onEditClicked(ActionEvent event) {
         Receptionist receptionist = receptionists.get(selectedItem);
-        //setValues(receptionist);
+        setValues(receptionist);
     }
 
     private void setValues(Receptionist receptionist) {
@@ -138,6 +144,10 @@ public class CreateReceptController implements Initializable {
         mNameField.setText(receptionist.getFirstName());
         mLastNameField.setText(receptionist.getLastName());
         mPassword.setText(receptionist.getPassword());
+
+
+
+        mCreateBtn.setText("Save");
     }
 
     @FXML
