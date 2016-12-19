@@ -22,7 +22,7 @@ public class DB {
         this.connect();
     }
 
-    private void connect(){
+    public void connect(){
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hotel",user,password);

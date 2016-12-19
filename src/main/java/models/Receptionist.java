@@ -1,8 +1,5 @@
 package main.java.models;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 /**
  * Created by by_dingo on 18.12.2016.
  */
@@ -14,8 +11,9 @@ public class Receptionist {
     String gender;
     String experience;
     boolean isMarried;
-    Date birthday;
+    String birthday;
     String hash_id;
+    String married;
 
     public Receptionist() {
         hash_id = String.valueOf(hashCode());
@@ -77,11 +75,11 @@ public class Receptionist {
         isMarried = married;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -91,5 +89,17 @@ public class Receptionist {
 
     public void setHash_id(String hash_id) {
         this.hash_id = hash_id;
+    }
+
+    public String getMarried() {
+        if (isMarried())
+            setMarried("Yes");
+        else
+            setMarried("No");
+        return married;
+    }
+
+    private void setMarried(String married) {
+        this.married = married;
     }
 }
