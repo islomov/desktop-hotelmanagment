@@ -14,6 +14,10 @@ import java.util.ResourceBundle;
  */
 public class CreateReceptController implements Initializable {
 
+
+    @FXML
+    private TextField mUserNameField;
+
     @FXML
     private TableColumn<?, ?> mColumnLastName;
 
