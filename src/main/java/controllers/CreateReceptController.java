@@ -48,6 +48,7 @@ public class CreateReceptController implements Initializable {
     @FXML
     private TableColumn<?, ?> mColumnNo;
 
+
     @FXML
     private Button mDeleteBtn;
 
@@ -78,6 +79,10 @@ public class CreateReceptController implements Initializable {
     @FXML
     private TextField mNameField;
 
+    @FXML
+    void onRowClicked(ActionEvent event) {
+
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

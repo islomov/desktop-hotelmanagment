@@ -82,11 +82,6 @@ public class ReceptionistScreenController {
 
     }
 
-    @FXML
-    void onRowClicked(ActionEvent event) {
-
-    }
-
 
     @FXML
     void onExitClicked(ActionEvent event) throws IOException {
