@@ -28,15 +28,6 @@ public class ManagerScreenController implements Initializable{
     @FXML
     AnchorPane mainRoot;
 
-    @FXML
-    private MenuItem hotelSubMenu;
-
-    @FXML
-    private MenuItem roomsSubItem;
-
-    @FXML
-    private MenuItem receptionistSubMenu;
-
 
     @FXML
     void onRoomsClicked(ActionEvent event) throws IOException {
@@ -60,12 +51,12 @@ public class ManagerScreenController implements Initializable{
 
     @FXML
     void onHotelClicked(ActionEvent event) throws IOException {
-        Stage stage  = new Stage();
-        Parent rootHotel = FXMLLoader.load(getClass().getResource("/main/layout/hotel_screen.fxml"));
-        Scene scene = new Scene(rootHotel);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        try {
+            root.getChildren().clear();
+            root.getChildren().add(FXMLLoader.load(getClass().getResource("/main/layout/hotel_screen.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
