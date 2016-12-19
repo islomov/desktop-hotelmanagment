@@ -34,7 +34,7 @@ public class CreateReceptController implements Initializable {
     private TableColumn<Receptionist, Boolean> mColumnMarried;
 
     @FXML
-    private ChoiceBox<?> mMarriedChoice;
+    private ChoiceBox<String> mMarriedChoice;
 
     @FXML
     private TextField mSearchField;
@@ -88,6 +88,7 @@ public class CreateReceptController implements Initializable {
     ReceptionistDB db;
     static ObservableList<Receptionist> receptionists;
     int selectedItem;
+    int editItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,25 +108,33 @@ public class CreateReceptController implements Initializable {
 
         // TODO: 19.12.2016 Check if fields not empty
         if (mCreateBtn.getText().equals("Save")){
-            db.updateReceptionist(receptionists.get(selectedItem));
-            receptionists.remove(selectedItem);
+            Receptionist receptionist = createReceptionist();
+            receptionist.setHash_id(receptionists.get(editItem).getHash_id());
+            Receptionist newreceptionist = db.updateReceptionist(receptionist);
+            receptionists.remove(editItem);
+            receptionists.add(editItem,newreceptionist);
             mCreateBtn.setText("Create");
             refreshFields();
         }else {
-            Receptionist receptionist = new Receptionist();
-            receptionist.setUserName(mUserNameField.getText());
-            receptionist.setPassword(mPassword.getText());
-            receptionist.setFirstName(mNameField.getText());
-            receptionist.setLastName(mLastNameField.getText());
-            receptionist.setGender(mGenderChoice.getSelectionModel().getSelectedItem().toString());
-            receptionist.setExperience(mExperienceChoice.getSelectionModel().getSelectedItem().toString());
-            boolean isMarried = mMarriedChoice.getSelectionModel().getSelectedIndex() == 0;
-            receptionist.setMarried(isMarried);
-            receptionist.setBirthday(mBirthdayDate.getValue().toString());
+            Receptionist receptionist = createReceptionist();
             receptionists.add(receptionist);
             refreshFields();
             db.addReceptionist(receptionist);
         }
+    }
+
+    private Receptionist createReceptionist() {
+        Receptionist receptionist = new Receptionist();
+        receptionist.setUserName(mUserNameField.getText());
+        receptionist.setPassword(mPassword.getText());
+        receptionist.setFirstName(mNameField.getText());
+        receptionist.setLastName(mLastNameField.getText());
+        receptionist.setGender(mGenderChoice.getSelectionModel().getSelectedItem().toString());
+        receptionist.setExperience(mExperienceChoice.getSelectionModel().getSelectedItem().toString());
+        boolean isMarried = mMarriedChoice.getSelectionModel().getSelectedIndex() == 0;
+        receptionist.setMarried(isMarried);
+        receptionist.setBirthday(mBirthdayDate.getValue().toString());
+        return receptionist;
     }
 
     @FXML
@@ -137,6 +146,7 @@ public class CreateReceptController implements Initializable {
     void onEditClicked(ActionEvent event) {
         Receptionist receptionist = receptionists.get(selectedItem);
         setValues(receptionist);
+        editItem = selectedItem;
     }
 
     private void setValues(Receptionist receptionist) {
@@ -144,7 +154,7 @@ public class CreateReceptController implements Initializable {
         mNameField.setText(receptionist.getFirstName());
         mLastNameField.setText(receptionist.getLastName());
         mPassword.setText(receptionist.getPassword());
-
+        mMarriedChoice.setValue(receptionist.getMarried());
 
 
         mCreateBtn.setText("Save");

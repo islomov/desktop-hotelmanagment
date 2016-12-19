@@ -18,6 +18,7 @@ public class ReceptionistDB extends DB {
     private PreparedStatement updateReceptionistSt = null;
     private PreparedStatement deleteReceptionistSt = null;
     private PreparedStatement getAllReceptionistSt = null;
+    private PreparedStatement getReceptionistSt = null;
 
     public ReceptionistDB() {
         super();
@@ -35,6 +36,8 @@ public class ReceptionistDB extends DB {
 
             getAllReceptionistSt = this.getConnection().prepareStatement("SELECT * FROM receptionist");
 
+            getReceptionistSt = this.getConnection().prepareStatement("SELECT * FROM receptionist WHERE hash_id = ?");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,12 +53,15 @@ public class ReceptionistDB extends DB {
 
     }
 
-    public void updateReceptionist(Receptionist receptionist) {
+    public Receptionist updateReceptionist(Receptionist receptionist) {
+        Receptionist newReceptionist = null;
         try {
             setValues(updateReceptionistSt,receptionist);
+            newReceptionist = getReceptionist(receptionist.getHash_id());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return newReceptionist;
     }
 
     public void deleteReceptionist(String hash){
@@ -75,16 +81,7 @@ public class ReceptionistDB extends DB {
             resultSet = getAllReceptionistSt.executeQuery();
 
             while (resultSet.next()){
-                Receptionist receptionist = new Receptionist();
-                receptionist.setUserName(resultSet.getString("username"));
-                receptionist.setPassword(resultSet.getString("password"));
-                receptionist.setFirstName(resultSet.getString("first_name"));
-                receptionist.setLastName(resultSet.getString("last_name"));
-                receptionist.setGender(resultSet.getString("gender"));
-                receptionist.setExperience(resultSet.getString("experience"));
-                receptionist.setMarried(resultSet.getBoolean("married"));
-                receptionist.setBirthday(resultSet.getString("birthday"));
-                receptionist.setHash_id(resultSet.getString("hash_id"));
+                Receptionist receptionist = createReceptionist(resultSet);
 
                 receptionists.add(receptionist);
             }
@@ -93,6 +90,35 @@ public class ReceptionistDB extends DB {
             e.printStackTrace();
         }
         return receptionists;
+    }
+
+    private Receptionist createReceptionist(ResultSet resultSet) throws SQLException {
+        Receptionist receptionist = new Receptionist();
+        receptionist.setUserName(resultSet.getString("username"));
+        receptionist.setPassword(resultSet.getString("password"));
+        receptionist.setFirstName(resultSet.getString("first_name"));
+        receptionist.setLastName(resultSet.getString("last_name"));
+        receptionist.setGender(resultSet.getString("gender"));
+        receptionist.setExperience(resultSet.getString("experience"));
+        receptionist.setMarried(resultSet.getBoolean("married"));
+        receptionist.setBirthday(resultSet.getString("birthday"));
+        receptionist.setHash_id(resultSet.getString("hash_id"));
+        return receptionist;
+    }
+
+    public Receptionist getReceptionist(String hash){
+        ResultSet resultSet = null;
+        Receptionist receptionist = null;
+        try {
+            getReceptionistSt.setString(1,hash);
+            resultSet = getReceptionistSt.executeQuery();
+            while (resultSet.next()){
+                receptionist = createReceptionist(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return receptionist;
     }
 
     private void setValues(PreparedStatement statement, Receptionist receptionist) throws SQLException {
