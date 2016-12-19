@@ -2,6 +2,7 @@ package main.java.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
@@ -11,7 +12,7 @@ import java.util.ResourceBundle;
 /**
  * Created by sardor on 12/18/16.
  */
-public class CreateReceptController  extends ManagerScreenController{
+public class CreateReceptController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

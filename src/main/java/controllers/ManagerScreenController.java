@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main.java.Main;
 
@@ -20,11 +21,12 @@ import java.util.ResourceBundle;
  * Created by sardor on 12/16/16.
  */
 
-public abstract class ManagerScreenController implements Initializable{
+public class ManagerScreenController implements Initializable{
 
     @FXML
-    private AnchorPane root;
-
+    private StackPane root;
+    @FXML
+    AnchorPane mainRoot;
 
     @FXML
     private MenuItem hotelSubMenu;
@@ -38,20 +40,22 @@ public abstract class ManagerScreenController implements Initializable{
 
     @FXML
     void onRoomsClicked(ActionEvent event) throws IOException {
-        Stage stage  = (Stage) root.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/main/layout/create_room_screen.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            root.getChildren().clear();
+            root.getChildren().add(FXMLLoader.load(getClass().getResource("/main/layout/create_room_screen.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void onReceptionistClicked(ActionEvent event) throws IOException {
-        Stage stage  = (Stage) root.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            root.getChildren().clear();
+            root.getChildren().add(FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -66,16 +70,24 @@ public abstract class ManagerScreenController implements Initializable{
 
     @FXML
     void onExitClicked(ActionEvent event) throws IOException {
-        Stage stage  = (Stage) root.getScene().getWindow();
-        stage.close();
-
         Stage newStage = new Stage();
         Parent adminRoot = FXMLLoader.load(getClass().getResource("/main/layout/login_screen.fxml"));
         Scene scene = new Scene(adminRoot);
         newStage.setScene(scene);
         newStage.setResizable(false);
         newStage.show();
+
+        Stage stage  = (Stage) mainRoot.getScene().getWindow();
+        stage.close();
     }
 
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            root.getChildren().clear();
+            root.getChildren().add(FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
