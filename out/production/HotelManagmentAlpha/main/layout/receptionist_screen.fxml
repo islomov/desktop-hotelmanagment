@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="1020.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ReceptionistScreenController">
@@ -62,7 +63,14 @@
                                         </Text>
                                         <ChoiceBox fx:id="mGenderChoice" maxWidth="1.7976931348623157E308"
                                                    minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1"
-                                                   GridPane.rowIndex="1"/>
+                                                   GridPane.rowIndex="1">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="Male" />
+                                                    <String fx:value="Female" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room type"
                                               GridPane.rowIndex="4">
                                             <font>
@@ -95,7 +103,15 @@
                                         </Text>
                                         <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="1.7976931348623157E308"
                                                    minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1"
-                                                   GridPane.rowIndex="4"/>
+                                                   GridPane.rowIndex="4">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="Double room" />
+                                                    <String fx:value="Suit room" />
+                                                    <String fx:value="King room" />
+                                                </FXCollections>
+                                            </items>
+                                        </ChoiceBox>
                                         <TextField fx:id="mRoomNoField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                                         <DatePicker fx:id="mArrivalData" maxWidth="1.7976931348623157E308"
                                                     GridPane.columnIndex="1" GridPane.rowIndex="6"/>
