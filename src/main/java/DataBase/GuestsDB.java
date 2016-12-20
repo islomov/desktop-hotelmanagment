@@ -18,8 +18,8 @@ public class GuestsDB extends DB{
 
         try {
             insertGuestSt = this.getConnection().prepareStatement("INSERT INTO guests" +
-                    "(hash_id,receptionist_hash_id, name, gender, birthday, room_type, arrival_day, count_day, total_price) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?)");
+                    "(hash_id,receptionist_hash_id, name, gender, birthday, room_type, arrival_day, count_day, total_price,room_number) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)");
             getGuestsByReceptionistSt = this.getConnection().prepareStatement("SELECT *FROM guests WHERE receptionist_hash_id = ? ");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -27,21 +27,24 @@ public class GuestsDB extends DB{
 
     }
 
-    public void addGuest(Guest guest){
+    public void insertGuest(Guest guest){
         try {
-            insertGuestSt.setString(1,guest.getHashId());
-            insertGuestSt.setString(2,guest.getReceptionistHasId());
-            insertGuestSt.setString(3,guest.getGender());
-            insertGuestSt.setString(4,guest.getBirthday());
-            insertGuestSt.setString(5,"Type1");
-            insertGuestSt.setString(6,guest.getArrivalDay());
-            insertGuestSt.setInt(7,guest.getCountDay());
-            insertGuestSt.setInt(8,guest.getTotalPrice());
-            insertGuestSt.executeUpdate();
+            setValues(insertGuestSt,guest);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    private void setValues(PreparedStatement statement, Guest guest) throws SQLException {
+        statement.setString(1,guest.getHashId());
+        statement.setString(2,guest.getReceptionistHasId());
+        statement.setString(3,guest.getGender());
+        statement.setString(4,guest.getBirthday());
+        statement.setString(5,guest.getRoomType());
+        statement.setString(6,guest.getArrivalDay());
+        statement.setInt(7,guest.getCountDay());
+        statement.setInt(8,guest.getTotalPrice());
+        statement.executeUpdate();
+    }
 
 }

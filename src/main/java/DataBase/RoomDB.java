@@ -19,6 +19,8 @@ public class RoomDB extends DB {
     private PreparedStatement updateRoomsSt = null;
     private PreparedStatement getRoomByNumberSt = null;
     private PreparedStatement deleteRoomSt = null;
+    private PreparedStatement getEmptyRoomsNumberSt = null;
+    private PreparedStatement changeRoomStatusSt = null;
 
     public RoomDB() {
 
@@ -26,8 +28,8 @@ public class RoomDB extends DB {
 
         try {
             insertRoomSt = this.getConnection().prepareStatement("INSERT INTO rooms " +
-                    "(type, number_of_bad_room, number_of_kitchen, number_of_bath_room, day_of_creation, cost,number) " +
-                    "VALUES (?,?,?,?,?,?,?)");
+                    "(type, number_of_bad_room, number_of_kitchen, number_of_bath_room, day_of_creation, cost,status,number) " +
+                    "VALUES (?,?,?,?,?,?,?,?)");
 
             getAllRoomsSt = this.getConnection().prepareStatement("SELECT  * FROM rooms");
 
@@ -42,9 +44,16 @@ public class RoomDB extends DB {
             getRoomByNumberSt = this.getConnection().prepareStatement("SELECT * FROM rooms " +
                     "WHERE number = ?");
 
+            getEmptyRoomsNumberSt = this.getConnection().prepareStatement("SELECT * FROM rooms " +
+                    "WHERE type = ? AND status = ?");
+
             deleteRoomSt = this.getConnection().prepareStatement("DELETE FROM rooms " +
                     "WHERE number = ?");
 
+
+            changeRoomStatusSt = this.getConnection().prepareStatement("UPDATE rooms SET " +
+                    "status = ? " +
+                    "WHERE number = ?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,6 +132,34 @@ public class RoomDB extends DB {
         return room;
     }
 
+    public List<String> getEmptyRoomsNumber(String type){
+        ResultSet resultSet = null;
+        String status = "empty";
+        List<String> numbers = new ArrayList<>();
+        try {
+            getEmptyRoomsNumberSt.setString(1,type);
+            getEmptyRoomsNumberSt.setString(2,status);
+            resultSet = getEmptyRoomsNumberSt.executeQuery();
+            while (resultSet.next()){
+                numbers.add(String.valueOf(resultSet.getInt("number")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return numbers;
+    }
+
+    public void changeRoomStatus(int number,String status){
+        try {
+            changeRoomStatusSt.setString(1,status);
+            changeRoomStatusSt.setInt(2,number);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private Room createRoom(ResultSet resultSet) throws SQLException {
         Room room = new Room();
 
@@ -144,7 +181,8 @@ public class RoomDB extends DB {
         statement.setInt(4,room.getNumberOfBathRoom());
         statement.setString(5,room.getDayOfCreation());
         statement.setInt(6,room.getCost());
-        statement.setInt(7,room.getNumber());
+        statement.setString(7,"empty");
+        statement.setInt(8,room.getNumber());
         statement.executeUpdate();
     }
 }

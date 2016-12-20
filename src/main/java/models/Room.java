@@ -12,6 +12,7 @@ public class Room {
     int numberOfBathRoom;
     String dayOfCreation;
     int cost;
+    String status;
 
     public int getNumber() {
         return number;
@@ -67,5 +68,13 @@ public class Room {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

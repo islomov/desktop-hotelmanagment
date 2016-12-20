@@ -1,5 +1,9 @@
 package main.java.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +17,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.DataBase.GuestsDB;
+import main.java.DataBase.RoomDB;
+import main.java.models.Guest;
 import main.java.models.Receptionist;
+import main.java.models.Room;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -26,6 +36,10 @@ public class ReceptionistScreenController implements Initializable{
 
     Receptionist receptionist;
 
+    ObservableList<Guest> guests;
+
+    RoomDB roomDB;
+    GuestsDB guestsDB;
 
     @FXML
     Parent root;
@@ -64,20 +78,20 @@ public class ReceptionistScreenController implements Initializable{
     private Button mEditBtn;
 
     @FXML
-    private ChoiceBox<?> mRoomTypeChoice;
+    private ChoiceBox<String> mRoomTypeChoice;
 
     @FXML
     private TextField mCountPeopleField;
 
     @FXML
-    private ChoiceBox<?> mGenderChoice;
+    private ChoiceBox<String> mGenderChoice;
 
     @FXML
     private Button mCreatBtn;
 
 
     @FXML
-    private ChoiceBox<?> mRoomNoChoiceBox;
+    private ChoiceBox<String> mRoomNoChoiceBox;
 
 
     @FXML
@@ -87,7 +101,23 @@ public class ReceptionistScreenController implements Initializable{
 
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
+        Guest guest = createGuest();
+        guestsDB.insertGuest(guest);
+        guests.add(guest);
+    }
 
+    private Guest createGuest() {
+        Guest guest = new Guest();
+        guest.setReceptionistHasId(receptionist.getHash_id());
+        guest.setRoomNumber(Integer.parseInt(mRoomTypeChoice.getSelectionModel().getSelectedItem()));
+        guest.setRoomType(mRoomTypeChoice.getSelectionModel().getSelectedItem());
+        guest.setName(mGNameField.getText());
+        guest.setGender(mGenderChoice.getSelectionModel().getSelectedItem());
+        guest.setBirthday(mBirthdayDate.getValue().toString());
+        guest.setArrivalDay(mArrivalData.getValue().toString());
+        guest.setCountDay(Integer.parseInt(mCountDayField.getText()));
+        guest.setTotalPrice(Integer.parseInt(mPriceField.getText()));
+        return guest;
     }
 
     @FXML
@@ -137,6 +167,31 @@ public class ReceptionistScreenController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        roomDB = new RoomDB();
+        guestsDB = new GuestsDB();
         receptionist = LoginScreenController.receptionist;
+        mRoomTypeChoice.getSelectionModel().selectedIndexProperty().addListener(changeListener);
     }
+
+    ChangeListener changeListener = (observable, oldValue, newValue) -> {
+
+        List<String> numbers;
+        switch (mRoomTypeChoice.getSelectionModel().getSelectedIndex()){
+            case 0:
+                numbers = roomDB.getEmptyRoomsNumber("Double room");
+                break;
+            case 1:
+                numbers = roomDB.getEmptyRoomsNumber("Suit room");
+                break;
+            case 2:
+                numbers = roomDB.getEmptyRoomsNumber("King room");
+                break;
+            default:
+                numbers = new ArrayList<>();
+                break;
+        }
+        ObservableList<String> strings = FXCollections.observableList(numbers);
+        mRoomNoChoiceBox.setItems(strings);
+    };
+
 }

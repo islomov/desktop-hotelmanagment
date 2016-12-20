@@ -11,8 +11,10 @@ public class Guest {
     String gender;
     String birthday;
     String arrivalDay;
+    String roomType;
     int countDay;
     int totalPrice;
+    int roomNumber;
     Room room;
 
     public Guest() {
@@ -67,6 +69,14 @@ public class Guest {
         this.arrivalDay = arrivalDay;
     }
 
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
     public int getCountDay() {
         return countDay;
     }
@@ -77,6 +87,14 @@ public class Guest {
 
     public int getTotalPrice() {
         return totalPrice;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     public void setTotalPrice(int totalPrice) {
