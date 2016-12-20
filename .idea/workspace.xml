@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/DataBase/GuestsDB.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/DataBase/RoomDB.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/models/Guest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/models/Room.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/CreateRoomController.class" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/CreateRoomController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/LoginScreenController.class" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/LoginScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/ReceptionistScreenController.class" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/controllers/ReceptionistScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/DataBase/DB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/DataBase/GuestsDB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/DataBase/ReceptionistDB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/DataBase/RoomDB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/Utils.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/models/Guest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/models/Manager.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/models/Receptionist.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/HotelManagmentAlpha/main/java/models/Room.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DataBase/ReceptionistDB.java" afterPath="$PROJECT_DIR$/src/main/java/DataBase/ReceptionistDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateReceptController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateReceptController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateRoomController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateRoomController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginScreenController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/ReceptionistScreenController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReceptionistScreenController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -944,7 +942,7 @@
       <workItem from="1482165992415" duration="8489000" />
       <workItem from="1482219809743" duration="10191000" />
       <workItem from="1482232047127" duration="215000" />
-      <workItem from="1482232394421" duration="5053000" />
+      <workItem from="1482232394421" duration="5133000" />
     </task>
     <task id="LOCAL-00001" summary="DB added">
       <created>1482080057433</created>
@@ -1002,11 +1000,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482227192553</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="adding room">
+      <created>1482238123658</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1482238123659</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61230000" />
+    <option name="totallyTimeSpent" value="61310000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,7 +1024,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1030,7 +1035,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.73572594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21482602" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -1107,7 +1112,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="update function bug fixed(Receptionist)" />
     <MESSAGE value="login screen bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="login screen bug fixed" />
+    <MESSAGE value="adding room" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding room" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

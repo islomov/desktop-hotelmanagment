@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - hotel@localhost" uuid="3bf698ff-d684-4d31-8a12-b6670b29d964">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>hotel.pg_catalog hotel.public</schema-pattern>
+      <default-schemas>hotel.public</default-schemas>
+    </data-source>
+  </component>
+</project>
