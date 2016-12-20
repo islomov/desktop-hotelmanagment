@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.java.DataBase.ReceptionistDB;
 import main.java.models.Manager;
@@ -67,7 +64,11 @@ public class LoginScreenController {
                 login(event, adminParent);
             }
             else{
-                // TODO: 20.12.2016 password error screen
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText("Ooops, You write wrong password!");
+                alert.showAndWait();
             }
         }
 
