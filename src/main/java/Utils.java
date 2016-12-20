@@ -6,6 +6,6 @@ package main.java;
 public class Utils {
 
     public static final String USER = "postgres";
-    public static final String PASSWORD = "234asd";
+    public static final String PASSWORD = "1";
 
 }

@@ -13,6 +13,7 @@ import main.java.DataBase.ReceptionistDB;
 import main.java.models.Receptionist;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -52,10 +53,6 @@ public class CreateReceptController implements Initializable {
     private TextField mPassword;
 
     @FXML
-    private TableColumn<?, ?> mColumnNo;
-
-
-    @FXML
     private Button mDeleteBtn;
 
     @FXML
@@ -68,7 +65,7 @@ public class CreateReceptController implements Initializable {
     private Button mEditBtn;
 
     @FXML
-    private ChoiceBox<?> mExperienceChoice;
+    private ChoiceBox<String> mExperienceChoice;
 
     @FXML
     private TableView<Receptionist> mTableView;
@@ -77,7 +74,7 @@ public class CreateReceptController implements Initializable {
     private TableColumn<Receptionist, String> mColumnExperience;
 
     @FXML
-    private ChoiceBox<?> mGenderChoice;
+    private ChoiceBox<String> mGenderChoice;
 
     @FXML
     private TableColumn<Receptionist, String> mColumnName;
@@ -106,21 +103,34 @@ public class CreateReceptController implements Initializable {
     @FXML
     void onCreateClicked(ActionEvent event) {
 
-        // TODO: 19.12.2016 Check if fields not empty
-        if (mCreateBtn.getText().equals("Save")){
-            Receptionist receptionist = createReceptionist();
-            receptionist.setHash_id(receptionists.get(editItem).getHash_id());
-            Receptionist newreceptionist = db.updateReceptionist(receptionist);
-            receptionists.remove(editItem);
-            receptionists.add(editItem,newreceptionist);
-            mCreateBtn.setText("Create");
-            refreshFields();
+        if(mUserNameField.getText().length()==0 || mNameField.getText().length()==0
+                || mLastNameField.getText().length()==0 || mBirthdayDate.getEditor().getText().length()==0
+                || mGenderChoice.getValue().length()==0 || mExperienceChoice.getValue().length()==0 || mMarriedChoice.getValue().length()==0 || mPassword.getText().length()==0){
+                showWarning();
         }else {
-            Receptionist receptionist = createReceptionist();
-            receptionists.add(receptionist);
-            refreshFields();
-            db.addReceptionist(receptionist);
+            if (mCreateBtn.getText().equals("Save")) {
+                Receptionist receptionist = createReceptionist();
+                receptionist.setHash_id(receptionists.get(editItem).getHash_id());
+                Receptionist newreceptionist = db.updateReceptionist(receptionist);
+                receptionists.remove(editItem);
+                receptionists.add(editItem, newreceptionist);
+                mCreateBtn.setText("Create");
+                refreshFields();
+            } else {
+                Receptionist receptionist = createReceptionist();
+                receptionists.add(receptionist);
+                refreshFields();
+                db.addReceptionist(receptionist);
+            }
         }
+    }
+
+    private void showWarning(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning Dialog");
+        alert.setHeaderText("Look, an Warning Dialog");
+        alert.setContentText("Ooops, You didnt fill some field please make sure that you have filled all fields !!!");
+        alert.showAndWait();
     }
 
     private Receptionist createReceptionist() {
@@ -154,10 +164,16 @@ public class CreateReceptController implements Initializable {
         mNameField.setText(receptionist.getFirstName());
         mLastNameField.setText(receptionist.getLastName());
         mPassword.setText(receptionist.getPassword());
-        mMarriedChoice.setValue(receptionist.getMarried());
-
-
         mCreateBtn.setText("Save");
+        if(receptionist.isMarried()){
+            mMarriedChoice.setValue("Yes");
+        }else{
+            mMarriedChoice.setValue("No");
+        }
+        mGenderChoice.setValue(receptionist.getGender());
+        LocalDate localDate = LocalDate.parse(receptionist.getBirthday());
+        mBirthdayDate.setValue(localDate);
+        mExperienceChoice.setValue(receptionist.getExperience());
     }
 
     @FXML
@@ -177,6 +193,11 @@ public class CreateReceptController implements Initializable {
         mNameField.setText("");
         mLastNameField.setText("");
         mPassword.setText("");
+        mMarriedChoice.setValue(null);
+        mGenderChoice.setValue(null);
+        mBirthdayDate.setValue(null);
+        mExperienceChoice.setValue(null);
+
     }
 
 }
