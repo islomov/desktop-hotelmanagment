@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import main.java.DataBase.RoomDB;
 import main.java.models.Room;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -23,6 +25,11 @@ public class CreateRoomController implements Initializable {
 
     private RoomDB db;
 
+    int selectedItem;
+    int editItem;
+
+    Room room;
+
     @FXML
     private TableColumn<Room, Integer> mColumnRoomNo;
 
@@ -34,7 +41,7 @@ public class CreateRoomController implements Initializable {
 
 
     @FXML
-    private ChoiceBox<?> mKitchenRoomChoice;
+    private ChoiceBox<String> mKitchenRoomChoice;
 
     @FXML
     private TableColumn<Room, Integer> mColumnBad;
@@ -52,7 +59,7 @@ public class CreateRoomController implements Initializable {
     private Button mCreateRoomBtn;
 
     @FXML
-    private ChoiceBox<?> mBadRoomChoice;
+    private ChoiceBox<String> mBadRoomChoice;
 
     @FXML
     private Button mDeleteRoomBtn;
@@ -67,10 +74,10 @@ public class CreateRoomController implements Initializable {
     private TextField mRoomNoField;
 
     @FXML
-    private ChoiceBox<?> mRoomTypeChoice;
+    private ChoiceBox<String> mRoomTypeChoice;
 
     @FXML
-    private ChoiceBox<?> mBathRoomChoice;
+    private ChoiceBox<String> mBathRoomChoice;
 
     @FXML
     private TableColumn<Room, String> mColumnDate;
@@ -85,23 +92,35 @@ public class CreateRoomController implements Initializable {
     private TextField mSearchRoomField;
 
     @FXML
-    void onRoomRowClicked(ActionEvent event) {
-
+    void onRoomRowClicked(MouseEvent event) {
+        selectedItem = mTableRoom.getSelectionModel().getSelectedIndex();
     }
 
     @FXML
     void onCreateBtnClicked(ActionEvent event) {
+        if (mCreateRoomBtn.getText().equals("Save")){
+            Room room = createRoom();
+            rooms.remove(editItem);
+            rooms.add(editItem,db.updateRoom(room));
+            mCreateRoomBtn.setText("Create");
+        }else {
+
+            rooms.add(createRoom());
+            db.insertRoom(room);
+            refreshFields();
+        }
+    }
+
+    private Room createRoom() {
         Room room = new Room();
         room.setNumber(Integer.parseInt(mRoomNoField.getText()));
-        room.setType(mRoomTypeChoice.getSelectionModel().getSelectedItem().toString());
-        room.setNumberOfBadRoom(Integer.parseInt(mBadRoomChoice.getSelectionModel().getSelectedItem().toString()));
-        room.setNumberOfKitchen(Integer.parseInt(mKitchenRoomChoice.getSelectionModel().getSelectedItem().toString()));
-        room.setNumberOfBathRoom(Integer.parseInt(mBathRoomChoice.getSelectionModel().getSelectedItem().toString()));
+        room.setType(mRoomTypeChoice.getSelectionModel().getSelectedItem());
+        room.setNumberOfBadRoom(Integer.parseInt(mBadRoomChoice.getSelectionModel().getSelectedItem()));
+        room.setNumberOfKitchen(Integer.parseInt(mKitchenRoomChoice.getSelectionModel().getSelectedItem()));
+        room.setNumberOfBathRoom(Integer.parseInt(mBathRoomChoice.getSelectionModel().getSelectedItem()));
         room.setDayOfCreation(String.valueOf(mCreationDate.getValue()));
         room.setCost(Integer.parseInt(mCostRoomField.getText()));
-        rooms.add(room);
-        db.insertRoom(room);
-        refreshFields();
+        return room;
     }
 
     @FXML
@@ -111,7 +130,20 @@ public class CreateRoomController implements Initializable {
 
     @FXML
     void onEditBtnClicked(ActionEvent event) {
+        editItem = selectedItem;
+        room = rooms.get(editItem);
+        setValues(room);
+    }
 
+    private void setValues(Room room) {
+        mRoomNoField.setText(String.valueOf(room.getNumber()));
+        mRoomTypeChoice.setValue(room.getType());
+        mBadRoomChoice.setValue(String.valueOf(room.getNumberOfBadRoom()));
+        mKitchenRoomChoice.setValue(String.valueOf(room.getNumberOfKitchen()));
+        mBathRoomChoice.setValue(String.valueOf(room.getNumberOfBathRoom()));
+        mCreationDate.setValue(LocalDate.parse(room.getDayOfCreation()));
+        mCostRoomField.setText(String.valueOf(room.getCost()));
+        mCreateRoomBtn.setText("Save");
     }
 
     @FXML

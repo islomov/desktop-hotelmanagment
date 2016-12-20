@@ -84,14 +84,14 @@ public class RoomDB extends DB {
         Room newRoom = null;
         try {
             setValues(updateRoomsSt,room);
-            newRoom = getReceptionist(room.getNumber());
+            newRoom = getRoom(room.getNumber());
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return newRoom;
     }
 
-    public Room getReceptionist(int number){
+    public Room getRoom(int number){
         ResultSet resultSet = null;
         Room room = null;
         try {
@@ -117,7 +117,7 @@ public class RoomDB extends DB {
         room.setNumberOfKitchen(resultSet.getInt("number_of_kitchen"));
         room.setNumberOfBathRoom(resultSet.getInt("number_of_bath_room"));
         room.setDayOfCreation(resultSet.getString("day_of_creation"));
-        room.setCost(resultSet.getInt(resultSet.getInt("cost")));
+        room.setCost(resultSet.getInt("cost"));
 
         return room;
     }
