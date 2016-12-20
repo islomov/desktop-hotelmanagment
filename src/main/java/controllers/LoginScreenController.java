@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.java.DataBase.ReceptionistDB;
 import main.java.models.Manager;
+import main.java.models.Receptionist;
 
 import java.io.IOException;
 
@@ -20,23 +21,27 @@ import java.io.IOException;
  * Created by sardor on 12/15/16.
  */
 public class LoginScreenController {
+
     Stage stage;
+    public static Receptionist receptionist;
+    String hash_id;
+    ReceptionistDB db;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
     @FXML
-    private ChoiceBox mChoiceBox;
-
-    @FXML
-    private Button mLoginButton;
-
-    @FXML
     private TextField mUserName;
 
     @FXML
     private PasswordField mPassword;
+
+    @FXML
+    private ChoiceBox mChoiceBox;
+
+    @FXML
+    private Button mLoginButton;
 
 
 
@@ -58,6 +63,7 @@ public class LoginScreenController {
         }else{
             if (loginReceptionist(userName,password)) {
                 adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
+                receptionist = db.getReceptionist(hash_id);
                 login(event, adminParent);
             }
             else{
@@ -78,8 +84,8 @@ public class LoginScreenController {
 
     private boolean loginReceptionist(String userName, String password){
 
-        ReceptionistDB db = new ReceptionistDB();
-        String hash_id = db.checkReceptionist(userName,password);
+        db = new ReceptionistDB();
+        hash_id = db.checkReceptionist(userName,password);
 
         return !hash_id.equals("Error");
     }

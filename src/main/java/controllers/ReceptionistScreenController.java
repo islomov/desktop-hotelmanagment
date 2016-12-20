@@ -3,6 +3,7 @@ package main.java.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,13 +11,20 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.models.Receptionist;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by sardor on 12/15/16.
  */
-public class ReceptionistScreenController {
+public class ReceptionistScreenController implements Initializable{
+
+    Receptionist receptionist;
+
+
     @FXML
     Parent root;
 
@@ -62,6 +70,8 @@ public class ReceptionistScreenController {
     @FXML
     private Button mCreatBtn;
 
+
+
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
 
@@ -82,9 +92,6 @@ public class ReceptionistScreenController {
 
     }
 
-
-
-
     @FXML
     void onExitClicked(ActionEvent event) throws IOException {
         Stage stage  = (Stage) root.getScene().getWindow();
@@ -98,4 +105,9 @@ public class ReceptionistScreenController {
         newStage.show();
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        receptionist = LoginScreenController.receptionist;
+    }
 }

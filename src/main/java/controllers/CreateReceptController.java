@@ -87,8 +87,8 @@ public class CreateReceptController implements Initializable {
 
     ReceptionistDB db;
     static ObservableList<Receptionist> receptionists;
-    int selectedItem;
-    int editItem;
+    private int selectedItem;
+    private int editItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
