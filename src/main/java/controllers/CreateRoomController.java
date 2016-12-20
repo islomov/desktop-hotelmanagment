@@ -103,8 +103,9 @@ public class CreateRoomController implements Initializable {
             rooms.remove(editItem);
             rooms.add(editItem,db.updateRoom(room));
             mCreateRoomBtn.setText("Create");
+            mRoomNoField.setDisable(false);
+            refreshFields();
         }else {
-
             rooms.add(createRoom());
             db.insertRoom(room);
             refreshFields();
@@ -133,6 +134,7 @@ public class CreateRoomController implements Initializable {
         editItem = selectedItem;
         room = rooms.get(editItem);
         setValues(room);
+        mRoomNoField.setDisable(true);
     }
 
     private void setValues(Room room) {
@@ -144,6 +146,7 @@ public class CreateRoomController implements Initializable {
         mCreationDate.setValue(LocalDate.parse(room.getDayOfCreation()));
         mCostRoomField.setText(String.valueOf(room.getCost()));
         mCreateRoomBtn.setText("Save");
+
     }
 
     @FXML
