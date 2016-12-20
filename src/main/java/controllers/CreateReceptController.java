@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import main.java.DataBase.ReceptionistDB;
+import main.java.Utils;
 import main.java.models.Receptionist;
 
 import java.net.URL;
@@ -106,7 +107,7 @@ public class CreateReceptController implements Initializable {
         if(mUserNameField.getText().length()==0 || mNameField.getText().length()==0
                 || mLastNameField.getText().length()==0 || mBirthdayDate.getEditor().getText().length()==0
                 || mGenderChoice.getValue().length()==0 || mExperienceChoice.getValue().length()==0 || mMarriedChoice.getValue().length()==0 || mPassword.getText().length()==0){
-                showWarning();
+            Utils.showWarning();
         }else {
             if (mCreateBtn.getText().equals("Save")) {
                 Receptionist receptionist = createReceptionist();
@@ -125,13 +126,7 @@ public class CreateReceptController implements Initializable {
         }
     }
 
-    private void showWarning(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Warning Dialog");
-        alert.setHeaderText("Look, an Warning Dialog");
-        alert.setContentText("Ooops, You didnt fill some field please make sure that you have filled all fields !!!");
-        alert.showAndWait();
-    }
+
 
     private Receptionist createReceptionist() {
         Receptionist receptionist = new Receptionist();

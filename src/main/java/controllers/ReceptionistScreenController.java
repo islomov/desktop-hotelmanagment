@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -28,16 +25,13 @@ public class ReceptionistScreenController implements Initializable{
 
 
     @FXML
-    Parent root;
-
-    @FXML
     private TextField mGNameField;
 
     @FXML
     private DatePicker mArrivalData;
 
     @FXML
-    private Text mReceptUserNameField;
+    private TableColumn<?, ?> mRoomTypeColumn;
 
     @FXML
     private TextField mSearchField;
@@ -46,10 +40,19 @@ public class ReceptionistScreenController implements Initializable{
     private TextField mPriceField;
 
     @FXML
+    private TableColumn<?, ?> mArrivalDayColumn;
+
+    @FXML
     private TextField mCountDayField;
 
     @FXML
+    private TableColumn<?, ?> mCountDayColumn;
+
+    @FXML
     private DatePicker mBirthdayDate;
+
+    @FXML
+    private ChoiceBox<?> mRoomNoChoiceBox;
 
     @FXML
     private Button mDeleteBtn;
@@ -58,16 +61,28 @@ public class ReceptionistScreenController implements Initializable{
     private Button mSearchBtn;
 
     @FXML
-    private TextField mRoomNoField;
+    private Button mEditBtn;
 
     @FXML
-    private Button mEditBtn;
+    private TableColumn<?, ?> mGuestNameColumn;
+
+    @FXML
+    private AnchorPane root;
+
+    @FXML
+    private TableView<?> mTableView;
+
+    @FXML
+    private TableColumn<?, ?> mGenderColumn;
+
+    @FXML
+    private TableColumn<?, ?> mRoomNoColumn;
 
     @FXML
     private ChoiceBox<?> mRoomTypeChoice;
 
     @FXML
-    private TextField mCountPeopleField;
+    private TableColumn<?, ?> mPriceColumn;
 
     @FXML
     private ChoiceBox<?> mGenderChoice;
@@ -75,18 +90,22 @@ public class ReceptionistScreenController implements Initializable{
     @FXML
     private Button mCreatBtn;
 
+    @FXML
+    private TableColumn<?, ?> mAgeColumn;
 
     @FXML
-    private ChoiceBox<?> mRoomNoChoiceBox;
+    void onShowRoomsClicked(ActionEvent event) {
 
-
-    @FXML
-    private Text mReceptGenderField;
-
-
+    }
 
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void onRowGuestClicked(ActionEvent event) {
 
     }
 
@@ -104,12 +123,6 @@ public class ReceptionistScreenController implements Initializable{
     void onDeleteClicked(ActionEvent event) {
 
     }
-
-    @FXML
-    void onShowRoomsClicked(ActionEvent event) {
-
-    }
-
 
     @FXML
     void onReceptProfileClicked(ActionEvent event) throws IOException {

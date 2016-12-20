@@ -1,6 +1,5 @@
 package main.java.DataBase;
 
-import main.java.models.Receptionist;
 import main.java.models.Room;
 
 import java.sql.PreparedStatement;
@@ -18,6 +17,7 @@ public class RoomDB extends DB {
     private PreparedStatement getAllRoomsSt = null;
     private PreparedStatement updateRoomsSt = null;
     private PreparedStatement getRoomByNumberSt = null;
+    private PreparedStatement searchRooms = null;
     private PreparedStatement deleteRoomSt = null;
 
     public RoomDB() {
@@ -39,6 +39,8 @@ public class RoomDB extends DB {
                     "day_of_creation = ?," +
                     "cost = ? WHERE number = ?");
 
+            searchRooms = this.getConnection().prepareStatement("SELECT number FROM rooms WHERE number = ANY (?))");
+
             getRoomByNumberSt = this.getConnection().prepareStatement("SELECT * FROM rooms " +
                     "WHERE number = ?");
 
@@ -50,24 +52,32 @@ public class RoomDB extends DB {
         }
     }
 
-    public void insertRoom(Room room){
+    public List<Room> searchRoom(int number) throws SQLException {
+        List<Room> roomList = new ArrayList<>();
+        searchRooms.setInt(number, 7);
+        ResultSet resultSet = searchRooms.executeQuery();
+        resultSet.getFetchSize();
+        return roomList;
+    }
+
+    public void insertRoom(Room room) {
 
         try {
-            setValues(insertRoomSt,room);
+            setValues(insertRoomSt, room);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    public List<Room> getAllRooms(){
+    public List<Room> getAllRooms() {
 
         List<Room> rooms = new ArrayList<>();
         ResultSet resultSet = null;
 
         try {
             resultSet = getAllRoomsSt.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Room room = new Room();
                 room.setNumber(resultSet.getInt("number"));
                 room.setType(resultSet.getString("type"));
@@ -84,10 +94,10 @@ public class RoomDB extends DB {
         return rooms;
     }
 
-    public Room updateRoom(Room room){
+    public Room updateRoom(Room room) {
         Room newRoom = null;
         try {
-            setValues(updateRoomsSt,room);
+            setValues(updateRoomsSt, room);
             newRoom = getRoom(room.getNumber());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,23 +105,23 @@ public class RoomDB extends DB {
         return newRoom;
     }
 
-    public void deleteRoom(int number){
+    public void deleteRoom(int number) {
         try {
-            deleteRoomSt.setInt(1,number);
+            deleteRoomSt.setInt(1, number);
             deleteRoomSt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Room getRoom(int number){
+    public Room getRoom(int number) {
         ResultSet resultSet = null;
         Room room = null;
         try {
-            getRoomByNumberSt.setInt(1,number);
+            getRoomByNumberSt.setInt(1, number);
             resultSet = getRoomByNumberSt.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 room = createRoom(resultSet);
             }
 
@@ -123,7 +133,6 @@ public class RoomDB extends DB {
 
     private Room createRoom(ResultSet resultSet) throws SQLException {
         Room room = new Room();
-
         room.setNumber(resultSet.getInt("number"));
         room.setType(resultSet.getString("type"));
         room.setNumberOfBadRoom(resultSet.getInt("number_of_bad_room"));
@@ -131,18 +140,17 @@ public class RoomDB extends DB {
         room.setNumberOfBathRoom(resultSet.getInt("number_of_bath_room"));
         room.setDayOfCreation(resultSet.getString("day_of_creation"));
         room.setCost(resultSet.getInt("cost"));
-
         return room;
     }
 
     private void setValues(PreparedStatement statement, Room room) throws SQLException {
-        statement.setString(1,room.getType());
-        statement.setInt(2,room.getNumberOfBadRoom());
-        statement.setInt(3,room.getNumberOfKitchen());
-        statement.setInt(4,room.getNumberOfBathRoom());
-        statement.setString(5,room.getDayOfCreation());
-        statement.setInt(6,room.getCost());
-        statement.setInt(7,room.getNumber());
+        statement.setString(1, room.getType());
+        statement.setInt(2, room.getNumberOfBadRoom());
+        statement.setInt(3, room.getNumberOfKitchen());
+        statement.setInt(4, room.getNumberOfBathRoom());
+        statement.setString(5, room.getDayOfCreation());
+        statement.setInt(6, room.getCost());
+        statement.setInt(7, room.getNumber());
         statement.executeUpdate();
     }
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import main.java.DataBase.RoomDB;
+import main.java.Utils;
 import main.java.models.Room;
 
 import java.net.URL;
@@ -61,8 +62,6 @@ public class CreateRoomController implements Initializable {
     @FXML
     private ChoiceBox<String> mBadRoomChoice;
 
-
-
     @FXML
     private Button mDeleteRoomBtn;
 
@@ -100,18 +99,34 @@ public class CreateRoomController implements Initializable {
 
     @FXML
     void onCreateBtnClicked(ActionEvent event) {
-        if (mCreateRoomBtn.getText().equals("Save")){
-            Room room = createRoom();
-            rooms.remove(editItem);
-            rooms.add(editItem,db.updateRoom(room));
-            mCreateRoomBtn.setText("Create");
-            mRoomNoField.setDisable(false);
-            refreshFields();
-        }else {
-            rooms.add(createRoom());
-            db.insertRoom(room);
-            refreshFields();
+        if(mRoomNoField.getText().length()==0 || mRoomTypeChoice.getValue().length()==0 || mBadRoomChoice.getValue().length()==0 ||
+                mKitchenRoomChoice.getValue().length()==0 || mBathRoomChoice.getValue().length()==0 || mCreationDate.getEditor().getText().length()==0 ||
+                mCostRoomField.getText().length()==0){
+            Utils.showWarning();
+        }else{
+            if (mCreateRoomBtn.getText().equals("Save")){
+                Room room = createRoom();
+                rooms.remove(editItem);
+                rooms.add(editItem,db.updateRoom(room));
+                mCreateRoomBtn.setText("Create");
+                mRoomNoField.setDisable(false);
+                refreshFields();
+            }else {
+                rooms.add(createRoom());
+                db.insertRoom(room);
+                refreshFields();
+            }
         }
+    }
+
+    private void refreshFields(){
+        mRoomNoField.setText(null);
+        mRoomTypeChoice.setValue(null);
+        mBadRoomChoice.setValue(null);
+        mKitchenRoomChoice.setValue(null);
+        mBathRoomChoice.setValue(null);
+        mCreationDate.setValue(null);
+        mCostRoomField.setText(null);
     }
 
     private Room createRoom() {
@@ -171,13 +186,4 @@ public class CreateRoomController implements Initializable {
         mTableRoom.setItems(rooms);
     }
 
-    private void refreshFields(){
-        mRoomNoField.setText(null);
-        mRoomTypeChoice.setValue(null);
-        mBadRoomChoice.setValue(null);
-        mKitchenRoomChoice.setValue(null);
-        mBathRoomChoice.setValue(null);
-        mCreationDate.setValue(null);
-        mCostRoomField.setText(null);
-    }
 }
