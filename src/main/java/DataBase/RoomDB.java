@@ -15,15 +15,21 @@ public class RoomDB extends DB {
 
     private PreparedStatement insertRoomSt = null;
     private PreparedStatement getAllRoomsSt = null;
+    private PreparedStatement updateRoomsSt = null;
 
     public RoomDB() {
+
         super();
 
         try {
             insertRoomSt = this.getConnection().prepareStatement("INSERT INTO rooms " +
                     "(number, type, number_of_bad_room, number_of_kitchen, number_of_bath_room, day_of_creation, cost) " +
                     "VALUES (?,?,?,?,?,?,?)");
+
             getAllRoomsSt = this.getConnection().prepareStatement("SELECT  * FROM rooms");
+
+            updateRoomsSt = this.getConnection().prepareStatement("UPDATE receptionist SET " +
+                    "");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -31,6 +37,7 @@ public class RoomDB extends DB {
     }
 
     public void createRoom(Room room){
+
         try {
             insertRoomSt.setInt(1,room.getNumber());
             insertRoomSt.setString(2,room.getType());
@@ -43,11 +50,14 @@ public class RoomDB extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public List<Room> getAllRooms(){
+
         List<Room> rooms = new ArrayList<>();
         ResultSet resultSet = null;
+
         try {
             resultSet = getAllRoomsSt.executeQuery();
             while (resultSet.next()){
