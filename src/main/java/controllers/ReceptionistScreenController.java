@@ -3,6 +3,7 @@ package main.java.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,13 +13,22 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.models.Receptionist;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by sardor on 12/15/16.
  */
-public class ReceptionistScreenController {
+public class ReceptionistScreenController implements Initializable{
+
+    Receptionist receptionist;
+
+
+    @FXML
+    Parent root;
 
     @FXML
     private TextField mGNameField;
@@ -42,13 +52,7 @@ public class ReceptionistScreenController {
     private DatePicker mBirthdayDate;
 
     @FXML
-    private Text mReceptSureNameField;
-
-    @FXML
     private Button mDeleteBtn;
-
-    @FXML
-    private Text mReceptYearBirthField;
 
     @FXML
     private Button mSearchBtn;
@@ -60,16 +64,10 @@ public class ReceptionistScreenController {
     private Button mEditBtn;
 
     @FXML
-    private AnchorPane root;
-
-    @FXML
     private ChoiceBox<?> mRoomTypeChoice;
 
     @FXML
     private TextField mCountPeopleField;
-
-    @FXML
-    private Text mReceptNameField;
 
     @FXML
     private ChoiceBox<?> mGenderChoice;
@@ -84,6 +82,8 @@ public class ReceptionistScreenController {
 
     @FXML
     private Text mReceptGenderField;
+
+
 
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
@@ -134,4 +134,9 @@ public class ReceptionistScreenController {
         newStage.show();
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        receptionist = LoginScreenController.receptionist;
+    }
 }
