@@ -20,6 +20,7 @@ public class CreateRoomController implements Initializable {
 
 
     private ObservableList<Room> rooms;
+
     private RoomDB db;
 
     @FXML
@@ -83,6 +84,10 @@ public class CreateRoomController implements Initializable {
     @FXML
     private TextField mSearchRoomField;
 
+    @FXML
+    void onRoomRowClicked(ActionEvent event) {
+
+    }
 
     @FXML
     void onCreateBtnClicked(ActionEvent event) {
@@ -136,6 +141,5 @@ public class CreateRoomController implements Initializable {
         mBathRoomChoice.setValue(null);
         mCreationDate.setValue(null);
         mCostRoomField.setText(null);
-
     }
 }
