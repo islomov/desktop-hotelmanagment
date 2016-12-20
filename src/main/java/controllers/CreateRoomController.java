@@ -148,7 +148,8 @@ public class CreateRoomController implements Initializable {
 
     @FXML
     void onDeleteBtnClicked(ActionEvent event) {
-
+        db.deleteRoom(rooms.get(selectedItem).getNumber());
+        rooms.remove(selectedItem);
     }
 
     @Override
