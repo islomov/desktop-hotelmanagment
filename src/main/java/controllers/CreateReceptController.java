@@ -189,15 +189,14 @@ public class CreateReceptController implements Initializable {
     }
 
     private void refreshFields(){
-        mUserNameField.setText("");
-        mNameField.setText("");
-        mLastNameField.setText("");
-        mPassword.setText("");
+        mUserNameField.setText(null);
+        mNameField.setText(null);
+        mLastNameField.setText(null);
+        mPassword.setText(null);
         mMarriedChoice.setValue(null);
         mGenderChoice.setValue(null);
         mBirthdayDate.setValue(null);
         mExperienceChoice.setValue(null);
-
     }
 
 }

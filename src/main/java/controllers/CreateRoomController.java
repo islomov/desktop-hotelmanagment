@@ -96,7 +96,7 @@ public class CreateRoomController implements Initializable {
         room.setCost(Integer.parseInt(mCostRoomField.getText()));
         rooms.add(room);
         db.createRoom(room);
-
+        refreshFields();
     }
 
     @FXML
@@ -114,13 +114,10 @@ public class CreateRoomController implements Initializable {
 
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         db = new RoomDB();
-
         rooms = FXCollections.observableList(db.getAllRooms());
-
         mColumnRoomNo.setCellValueFactory(new PropertyValueFactory<>("number"));
         mColumnRoomType.setCellValueFactory(new PropertyValueFactory<>("type"));
         mColumnBad.setCellValueFactory(new PropertyValueFactory<>("numberOfBadRoom"));
@@ -128,7 +125,17 @@ public class CreateRoomController implements Initializable {
         mColumnBath.setCellValueFactory(new PropertyValueFactory<>("numberOfBathRoom"));
         mColumnDate.setCellValueFactory(new PropertyValueFactory<>("dayOfCreation"));
         mColumnCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-
         mTableRoom.setItems(rooms);
+    }
+
+    private void refreshFields(){
+        mRoomNoField.setText(null);
+        mRoomTypeChoice.setValue(null);
+        mBadRoomChoice.setValue(null);
+        mKitchenRoomChoice.setValue(null);
+        mBathRoomChoice.setValue(null);
+        mCreationDate.setValue(null);
+        mCostRoomField.setText(null);
+
     }
 }
