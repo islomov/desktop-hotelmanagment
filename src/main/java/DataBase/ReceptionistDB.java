@@ -19,6 +19,7 @@ public class ReceptionistDB extends DB {
     private PreparedStatement deleteReceptionistSt = null;
     private PreparedStatement getAllReceptionistSt = null;
     private PreparedStatement getReceptionistSt = null;
+    private PreparedStatement checkReceptionistSt = null;
 
     public ReceptionistDB() {
         super();
@@ -37,6 +38,8 @@ public class ReceptionistDB extends DB {
             getAllReceptionistSt = this.getConnection().prepareStatement("SELECT * FROM receptionist");
 
             getReceptionistSt = this.getConnection().prepareStatement("SELECT * FROM receptionist WHERE hash_id = ?");
+
+            checkReceptionistSt = this.getConnection().prepareStatement("SELECT * FROM receptionist WHERE username = ?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,6 +122,31 @@ public class ReceptionistDB extends DB {
             e.printStackTrace();
         }
         return receptionist;
+    }
+
+    public String checkReceptionist(String userName,String password){
+        ResultSet resultSet = null;
+        String mHashId = null;
+        String mUserName = null;
+        String mPassword =null;
+        try {
+            checkReceptionistSt.setString(1,userName);
+            resultSet = checkReceptionistSt.executeQuery();
+
+            while (resultSet.next()){
+                mHashId = resultSet.getString("hash_id");
+                mUserName = resultSet.getString("username");
+                mPassword = resultSet.getString("password");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error";
+        }
+        if (password.equals(mPassword))
+            return mHashId;
+        else
+            return "Error";
     }
 
     private void setValues(PreparedStatement statement, Receptionist receptionist) throws SQLException {

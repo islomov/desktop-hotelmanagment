@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.java.DataBase.ReceptionistDB;
 import main.java.models.Manager;
 
 import java.io.IOException;
@@ -38,6 +39,8 @@ public class LoginScreenController {
     private PasswordField mPassword;
 
 
+
+
     @FXML
     void onLoginClicked(ActionEvent event) throws IOException {
         Parent adminParent;
@@ -49,12 +52,17 @@ public class LoginScreenController {
 
         if(mChoiceBox.getSelectionModel().getSelectedItem().toString().equals("Manager")){
             if (manager.getUserName().equals(userName) && manager.getPassword().equals(password)) {
-                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/create_recept_screen.fxml"));
+                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/manager_screen.fxml"));
                 login(event, adminParent);
             }
         }else{
-            adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
-            login(event, adminParent);
+            if (loginReceptionist(userName,password)) {
+                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
+                login(event, adminParent);
+            }
+            else{
+                // TODO: 20.12.2016 password error screen
+            }
         }
 
     }
@@ -66,5 +74,13 @@ public class LoginScreenController {
         adminStage.hide();
         adminStage.setScene(adminScene);
         adminStage.show();
+    }
+
+    private boolean loginReceptionist(String userName, String password){
+
+        ReceptionistDB db = new ReceptionistDB();
+        String hash_id = db.checkReceptionist(userName,password);
+
+        return !hash_id.equals("Error");
     }
 }
