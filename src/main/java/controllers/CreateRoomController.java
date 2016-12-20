@@ -95,7 +95,7 @@ public class CreateRoomController implements Initializable {
         room.setDayOfCreation(String.valueOf(mCreationDate.getValue()));
         room.setCost(Integer.parseInt(mCostRoomField.getText()));
         rooms.add(room);
-        db.createRoom(room);
+        db.insertRoom(room);
         refreshFields();
     }
 

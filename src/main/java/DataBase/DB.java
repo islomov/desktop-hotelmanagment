@@ -1,6 +1,8 @@
 package main.java.DataBase;
 
 import main.java.Utils;
+import main.java.models.Receptionist;
+import main.java.models.Room;
 
 import java.sql.*;
 
@@ -65,4 +67,6 @@ public class DB {
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
+
+
 }
