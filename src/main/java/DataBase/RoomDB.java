@@ -18,6 +18,7 @@ public class RoomDB extends DB {
     private PreparedStatement getAllRoomsSt = null;
     private PreparedStatement updateRoomsSt = null;
     private PreparedStatement getRoomByNumberSt = null;
+    private PreparedStatement deleteRoomSt = null;
 
     public RoomDB() {
 
@@ -39,6 +40,9 @@ public class RoomDB extends DB {
                     "cost = ? WHERE number = ?");
 
             getRoomByNumberSt = this.getConnection().prepareStatement("SELECT * FROM rooms " +
+                    "WHERE number = ?");
+
+            deleteRoomSt = this.getConnection().prepareStatement("DELETE FROM rooms " +
                     "WHERE number = ?");
 
         } catch (SQLException e) {
@@ -89,6 +93,15 @@ public class RoomDB extends DB {
             e.printStackTrace();
         }
         return newRoom;
+    }
+
+    public void deleteRoom(int number){
+        try {
+            deleteRoomSt.setInt(1,number);
+            deleteRoomSt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Room getRoom(int number){
