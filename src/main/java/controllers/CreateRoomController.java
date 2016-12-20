@@ -104,8 +104,8 @@ public class CreateRoomController implements Initializable {
             rooms.add(editItem,db.updateRoom(room));
             mCreateRoomBtn.setText("Create");
         }else {
-
-            rooms.add(createRoom());
+            Room room = createRoom();
+            rooms.add(room);
             db.insertRoom(room);
             refreshFields();
         }

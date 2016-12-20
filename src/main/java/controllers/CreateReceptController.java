@@ -149,7 +149,6 @@ public class CreateReceptController implements Initializable {
 
     @FXML
     void onSearchClicked(ActionEvent event) {
-
     }
 
     @FXML

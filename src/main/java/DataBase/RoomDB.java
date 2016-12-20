@@ -45,6 +45,7 @@ public class RoomDB extends DB {
             deleteRoomSt = this.getConnection().prepareStatement("DELETE FROM rooms " +
                     "WHERE number = ?");
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -103,6 +104,7 @@ public class RoomDB extends DB {
             e.printStackTrace();
         }
     }
+
 
     public Room getRoom(int number){
         ResultSet resultSet = null;

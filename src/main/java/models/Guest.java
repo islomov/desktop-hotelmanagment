@@ -13,6 +13,7 @@ public class Guest {
     String arrivalDay;
     int countDay;
     int totalPrice;
+    Room room;
 
     public Guest() {
         this.hashId = String.valueOf(hashCode());
@@ -80,5 +81,13 @@ public class Guest {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

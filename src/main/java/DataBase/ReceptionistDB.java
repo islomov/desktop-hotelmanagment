@@ -21,6 +21,7 @@ public class ReceptionistDB extends DB {
     private PreparedStatement getReceptionistSt = null;
     private PreparedStatement checkReceptionistSt = null;
 
+
     public ReceptionistDB() {
 
         super();
