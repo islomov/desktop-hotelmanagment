@@ -23,9 +23,7 @@ public class ReceptionistDB extends DB {
 
 
     public ReceptionistDB() {
-
         super();
-
         try {
             insertReceptionistSt = this.getConnection().prepareStatement("INSERT INTO receptionist"
                     + "(username, password, first_name, last_name, gender, experience, married, birthday, hash_id)"
