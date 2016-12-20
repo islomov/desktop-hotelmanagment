@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import main.java.DataBase.ReceptionistDB;
 import main.java.models.Receptionist;
 
@@ -19,6 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Created by sardor on 12/18/16.
  */
+
 public class CreateReceptController implements Initializable {
 
 
