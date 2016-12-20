@@ -99,16 +99,6 @@ public class CreateRoomController implements Initializable {
 
     @FXML
     void onCreateBtnClicked(ActionEvent event) {
-        if (mCreateRoomBtn.getText().equals("Save")){
-            Room room = createRoom();
-            rooms.remove(editItem);
-            rooms.add(editItem,db.updateRoom(room));
-            mCreateRoomBtn.setText("Create");
-        }else {
-            Room room = createRoom();
-            rooms.add(room);
-            db.insertRoom(room);
-            refreshFields();
         if(mRoomNoField.getText().length()==0 || mRoomTypeChoice.getValue().length()==0 || mBadRoomChoice.getValue().length()==0 ||
                 mKitchenRoomChoice.getValue().length()==0 || mBathRoomChoice.getValue().length()==0 || mCreationDate.getEditor().getText().length()==0 ||
                 mCostRoomField.getText().length()==0){

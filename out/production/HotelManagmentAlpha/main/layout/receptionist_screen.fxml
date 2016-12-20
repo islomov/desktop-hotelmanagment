@@ -45,7 +45,6 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest name">
@@ -67,32 +66,32 @@
                                                 </FXCollections>
                                             </items>
                                         </ChoiceBox>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room type" GridPane.rowIndex="4">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room type" GridPane.rowIndex="3">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room No." GridPane.rowIndex="5">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Room No." GridPane.rowIndex="4">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Day" GridPane.rowIndex="6">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Day" GridPane.rowIndex="5">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Count day" GridPane.rowIndex="7">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Count day" GridPane.rowIndex="6">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price" GridPane.rowIndex="8">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price" GridPane.rowIndex="7">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
-                                        <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                        <ChoiceBox fx:id="mRoomTypeChoice" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                     <String fx:value="Double room" />
@@ -101,22 +100,16 @@
                                                 </FXCollections>
                                             </items>
                                         </ChoiceBox>
-                                        <DatePicker fx:id="mArrivalData" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                        <TextField fx:id="mCountDayField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                        <TextField fx:id="mPriceField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                        <DatePicker fx:id="mArrivalData" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                        <TextField fx:id="mCountDayField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                        <TextField fx:id="mPriceField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" GridPane.rowIndex="2">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Text>
                                         <DatePicker fx:id="mBirthdayDate" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of People" GridPane.rowIndex="3">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Text>
-                                        <TextField fx:id="mCountPeopleField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <ChoiceBox fx:id="mRoomNoChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <ChoiceBox fx:id="mRoomNoChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     </children>
                                 </GridPane>
                                 <Text fill="WHITE" layoutX="127.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check In" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
@@ -136,16 +129,16 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                             <children>
-                                <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                                <TableView fx:id="mTableView" onMouseClicked="#onRowGuestClicked" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                                     <columns>
-                                        <TableColumn prefWidth="100.0" text="No." />
-                                        <TableColumn prefWidth="100.0" text="Guest Name" />
-                                        <TableColumn prefWidth="100.0" text="Gender" />
-                                        <TableColumn prefWidth="100.0" text="Age" />
-                                        <TableColumn prefWidth="100.0" text="Room type" />
-                                        <TableColumn prefWidth="100.0" text="Room No." />
-                                        <TableColumn prefWidth="100.0" text="Arrival Day" />
-                                        <TableColumn prefWidth="100.0" text="Price" />
+                                        <TableColumn fx:id="mGuestNameColumn" prefWidth="100.0" text="Guest Name" />
+                                        <TableColumn fx:id="mGenderColumn" prefWidth="100.0" text="Gender" />
+                                        <TableColumn fx:id="mAgeColumn" prefWidth="100.0" text="Age" />
+                                        <TableColumn fx:id="mRoomTypeColumn" prefWidth="100.0" text="Room type" />
+                                        <TableColumn fx:id="mRoomNoColumn" prefWidth="100.0" text="Room No." />
+                                        <TableColumn fx:id="mArrivalDayColumn" prefWidth="100.0" text="Arrival Day" />
+                                        <TableColumn fx:id="mPriceColumn" prefWidth="100.0" text="Price" />
+                              <TableColumn fx:id="mCountDayColumn" prefWidth="75.0" text="Count day" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

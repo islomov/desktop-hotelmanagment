@@ -30,7 +30,6 @@ public class DB {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hotel",user,password);
 
             if (connection != null){
-                System.out.println("Database connected");
                 setConnected(true);
             }
 

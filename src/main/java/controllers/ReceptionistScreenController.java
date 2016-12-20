@@ -45,7 +45,7 @@ public class ReceptionistScreenController implements Initializable{
     private DatePicker mArrivalData;
 
     @FXML
-    private TableColumn<?, ?> mRoomTypeColumn;
+    private TableColumn<Guest, String> mRoomTypeColumn;
 
     @FXML
     private TextField mSearchField;
@@ -54,19 +54,17 @@ public class ReceptionistScreenController implements Initializable{
     private TextField mPriceField;
 
     @FXML
-    private TableColumn<?, ?> mArrivalDayColumn;
+    private TableColumn<Guest, String> mArrivalDayColumn;
 
     @FXML
     private TextField mCountDayField;
 
     @FXML
-    private TableColumn<?, ?> mCountDayColumn;
+    private TableColumn<Guest, String> mCountDayColumn;
 
     @FXML
     private DatePicker mBirthdayDate;
 
-    @FXML
-    private ChoiceBox<?> mRoomNoChoiceBox;
 
     @FXML
     private Button mDeleteBtn;
@@ -78,25 +76,25 @@ public class ReceptionistScreenController implements Initializable{
     private Button mEditBtn;
 
     @FXML
-    private TableColumn<?, ?> mGuestNameColumn;
+    private TableColumn<Guest, String> mGuestNameColumn;
 
     @FXML
     private AnchorPane root;
 
     @FXML
-    private TableView<?> mTableView;
+    private TableView<Guest> mTableView;
 
     @FXML
-    private TableColumn<?, ?> mGenderColumn;
+    private TableColumn<Guest, String> mGenderColumn;
 
     @FXML
-    private TableColumn<?, ?> mRoomNoColumn;
+    private TableColumn<Guest, String> mRoomNoColumn;
 
     @FXML
     private ChoiceBox<String> mRoomTypeChoice;
 
     @FXML
-    private TableColumn<?, ?> mPriceColumn;
+    private TableColumn<Guest, String> mPriceColumn;
 
     @FXML
     private ChoiceBox<String> mGenderChoice;
@@ -107,7 +105,7 @@ public class ReceptionistScreenController implements Initializable{
     @FXML
     private ChoiceBox<String> mRoomNoChoiceBox;
 
-    private TableColumn<?, ?> mAgeColumn;
+    private TableColumn<Guest, String> mAgeColumn;
 
     @FXML
     void onShowRoomsClicked(ActionEvent event) {
@@ -186,6 +184,9 @@ public class ReceptionistScreenController implements Initializable{
         guestsDB = new GuestsDB();
         receptionist = LoginScreenController.receptionist;
         mRoomTypeChoice.getSelectionModel().selectedIndexProperty().addListener(changeListener);
+
+
+
     }
 
     ChangeListener changeListener = (observable, oldValue, newValue) -> {

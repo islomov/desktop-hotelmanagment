@@ -1,8 +1,6 @@
 package main.java.DataBase;
 
-import main.java.models.Receptionist;
 import main.java.models.Room;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +37,8 @@ public class RoomDB extends DB {
                     "number_of_kitchen = ?," +
                     "number_of_bath_room = ?," +
                     "day_of_creation = ?," +
-                    "cost = ? WHERE number = ?");
+                    "cost = ?," +
+                    "status = ? WHERE number = ?");
 
             getRoomByNumberSt = this.getConnection().prepareStatement("SELECT * FROM rooms " +
                     "WHERE number = ?");
@@ -181,7 +180,7 @@ public class RoomDB extends DB {
         statement.setInt(4,room.getNumberOfBathRoom());
         statement.setString(5,room.getDayOfCreation());
         statement.setInt(6,room.getCost());
-        statement.setString(7,"empty");
+        statement.setString(7,room.getStatus());
         statement.setInt(8,room.getNumber());
         statement.executeUpdate();
     }
