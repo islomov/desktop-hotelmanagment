@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,14 +19,15 @@ import java.io.IOException;
  * Created by sardor on 12/15/16.
  */
 public class ReceptionistScreenController {
-    @FXML
-    Parent root;
 
     @FXML
     private TextField mGNameField;
 
     @FXML
     private DatePicker mArrivalData;
+
+    @FXML
+    private Text mReceptUserNameField;
 
     @FXML
     private TextField mSearchField;
@@ -39,7 +42,13 @@ public class ReceptionistScreenController {
     private DatePicker mBirthdayDate;
 
     @FXML
+    private Text mReceptSureNameField;
+
+    @FXML
     private Button mDeleteBtn;
+
+    @FXML
+    private Text mReceptYearBirthField;
 
     @FXML
     private Button mSearchBtn;
@@ -51,16 +60,30 @@ public class ReceptionistScreenController {
     private Button mEditBtn;
 
     @FXML
+    private AnchorPane root;
+
+    @FXML
     private ChoiceBox<?> mRoomTypeChoice;
 
     @FXML
     private TextField mCountPeopleField;
 
     @FXML
+    private Text mReceptNameField;
+
+    @FXML
     private ChoiceBox<?> mGenderChoice;
 
     @FXML
     private Button mCreatBtn;
+
+
+    @FXML
+    private ChoiceBox<?> mRoomNoChoiceBox;
+
+
+    @FXML
+    private Text mReceptGenderField;
 
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
@@ -82,8 +105,21 @@ public class ReceptionistScreenController {
 
     }
 
+    @FXML
+    void onShowRoomsClicked(ActionEvent event) {
+
+    }
 
 
+    @FXML
+    void onReceptProfileClicked(ActionEvent event) throws IOException {
+        Stage newStage = new Stage();
+        Parent adminRoot = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_profile_screen.fxml"));
+        Scene scene = new Scene(adminRoot);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
+        newStage.show();
+    }
 
     @FXML
     void onExitClicked(ActionEvent event) throws IOException {
