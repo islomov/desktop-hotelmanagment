@@ -50,13 +50,13 @@ public class ManagerScreenController implements Initializable{
     }
 
     @FXML
-    void onHotelClicked(ActionEvent event) throws IOException {
-        try {
-            root.getChildren().clear();
-            root.getChildren().add(FXMLLoader.load(getClass().getResource("/main/layout/hotel_screen.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void onHotelInfoClicked(ActionEvent event) throws IOException {
+        Stage newStage = new Stage();
+        Parent adminRoot = FXMLLoader.load(getClass().getResource("/main/layout/hotel_screen.fxml"));
+        Scene scene = new Scene(adminRoot);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
+        newStage.show();
     }
 
     @FXML

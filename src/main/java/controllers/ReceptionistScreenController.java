@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.java.models.Receptionist;
 
@@ -33,6 +35,9 @@ public class ReceptionistScreenController implements Initializable{
 
     @FXML
     private DatePicker mArrivalData;
+
+    @FXML
+    private Text mReceptUserNameField;
 
     @FXML
     private TextField mSearchField;
@@ -71,6 +76,14 @@ public class ReceptionistScreenController implements Initializable{
     private Button mCreatBtn;
 
 
+    @FXML
+    private ChoiceBox<?> mRoomNoChoiceBox;
+
+
+    @FXML
+    private Text mReceptGenderField;
+
+
 
     @FXML
     void onCreatBtnClicked(ActionEvent event) {
@@ -90,6 +103,22 @@ public class ReceptionistScreenController implements Initializable{
     @FXML
     void onDeleteClicked(ActionEvent event) {
 
+    }
+
+    @FXML
+    void onShowRoomsClicked(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void onReceptProfileClicked(ActionEvent event) throws IOException {
+        Stage newStage = new Stage();
+        Parent adminRoot = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_profile_screen.fxml"));
+        Scene scene = new Scene(adminRoot);
+        newStage.setScene(scene);
+        newStage.setResizable(false);
+        newStage.show();
     }
 
     @FXML

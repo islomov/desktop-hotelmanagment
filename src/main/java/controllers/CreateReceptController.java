@@ -197,7 +197,6 @@ public class CreateReceptController implements Initializable {
         mGenderChoice.setValue(null);
         mBirthdayDate.setValue(null);
         mExperienceChoice.setValue(null);
-
     }
 
 }

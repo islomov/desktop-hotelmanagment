@@ -5,22 +5,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ManagerScreenController">
+<AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1020.0" prefWidth="1680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ManagerScreenController">
     <children>
         <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
-                <Menu mnemonicParsing="false" text="General">
+                <Menu mnemonicParsing="false" text="Create">
                     <items>
                         <MenuItem fx:id="roomsSubItem" mnemonicParsing="false" onAction="#onRoomsClicked" text="Rooms" />
                         <MenuItem fx:id="receptionistSubMenu" mnemonicParsing="false" onAction="#onReceptionistClicked" text="Receptionist" />
-                        <MenuItem fx:id="hotelSubMenu" mnemonicParsing="false" onAction="#onHotelClicked" text="Hotel info" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onHotelInfoClicked" text="Hotel Info" />
+              </items>
+            </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
@@ -28,11 +27,13 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane    AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="29.0">
-
-            <StackPane fx:id="root" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" >
+        <AnchorPane AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="29.0">
+           <children>
+   
+               <StackPane fx:id="root" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             </StackPane>
+           </children>
 
         </AnchorPane>
     </children>
