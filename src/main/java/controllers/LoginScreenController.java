@@ -59,8 +59,8 @@ public class LoginScreenController {
             }
         }else{
             if (loginReceptionist(userName,password)) {
-                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
                 receptionist = db.getReceptionist(hash_id);
+                adminParent = FXMLLoader.load(getClass().getResource("/main/layout/receptionist_screen.fxml"));
                 login(event, adminParent);
             }
             else{

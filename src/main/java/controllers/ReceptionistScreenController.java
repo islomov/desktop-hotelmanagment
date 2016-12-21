@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -31,7 +32,6 @@ import java.util.ResourceBundle;
  */
 public class ReceptionistScreenController implements Initializable{
 
-    Receptionist receptionist;
 
     ObservableList<Guest> guests;
 
@@ -105,6 +105,7 @@ public class ReceptionistScreenController implements Initializable{
     @FXML
     private ChoiceBox<String> mRoomNoChoiceBox;
 
+    @FXML
     private TableColumn<Guest, String> mAgeColumn;
 
     @FXML
@@ -116,13 +117,15 @@ public class ReceptionistScreenController implements Initializable{
     void onCreatBtnClicked(ActionEvent event) {
         Guest guest = createGuest();
         guestsDB.insertGuest(guest);
+        roomDB.changeRoomStatus(Integer.parseInt(mRoomNoChoiceBox.getSelectionModel().getSelectedItem()),"reserved");
         guests.add(guest);
     }
 
     private Guest createGuest() {
         Guest guest = new Guest();
-        guest.setReceptionistHasId(receptionist.getHash_id());
-        guest.setRoomNumber(Integer.parseInt(mRoomTypeChoice.getSelectionModel().getSelectedItem()));
+        String receptionistHash_id = LoginScreenController.receptionist.getHash_id();
+        guest.setReceptionistHasId(receptionistHash_id);
+        guest.setRoomNumber(Integer.parseInt(mRoomNoChoiceBox.getSelectionModel().getSelectedItem()));
         guest.setRoomType(mRoomTypeChoice.getSelectionModel().getSelectedItem());
         guest.setName(mGNameField.getText());
         guest.setGender(mGenderChoice.getSelectionModel().getSelectedItem());
@@ -182,10 +185,19 @@ public class ReceptionistScreenController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         roomDB = new RoomDB();
         guestsDB = new GuestsDB();
-        receptionist = LoginScreenController.receptionist;
         mRoomTypeChoice.getSelectionModel().selectedIndexProperty().addListener(changeListener);
+        String hash = LoginScreenController.receptionist.getHash_id();
+        guests = FXCollections.observableList(guestsDB.getGuestsByReceptionist(hash));
 
-
+        mGuestNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        mGenderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        mAgeColumn.setCellValueFactory(new PropertyValueFactory<>("birthday"));
+        mRoomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        mRoomNoColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        mArrivalDayColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalDay"));
+        mPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        mCountDayColumn.setCellValueFactory(new PropertyValueFactory<>("countDay"));
+        mTableView.setItems(guests);
 
     }
 
